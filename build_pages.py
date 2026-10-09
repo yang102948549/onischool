@@ -313,3 +313,94 @@ body += ('<section class="cta wrap"><span class="mark" aria-hidden="true"></span
 write('proctor', page('proctor', 'Oni Proctor', 'Oni Proctor — A full exam roster, fair and checked',
     'Oni Proctor is a Windows desktop app for Korean schools. Enter the exam schedule, rooms and teacher conditions, assign proctors automatically, adjust by hand and export the roster to Excel.',
     'assets/proctor/assign.webp', body, [('oni-class', 'Oni Class'), ('oni-record', 'Oni Record')]))
+
+# ───────────────────────── Home (ecosystem hub) ─────────────────────────
+APPS = [
+ ('class', 'Oni Class', '#007aff', 'Beta', 'beta', 'assets/class/calendar.png', 'Oni Class calendar and daily details',
+  'A homeroom teacher’s workspace for calendars, timetables, student rosters, attendance and submissions. Built around the Windows desktop, with selected records available on mobile.',
+  [('oni-class/', 'Full tour →'), ('https://github.com/yang102948549/oni-class/releases', 'Windows beta ↗')]),
+ ('record', 'Oni Record', '#e05252', 'Beta', 'beta', 'assets/record/hero.webp', 'Oni Record table of students with the Write panel',
+  'Draft student records from observation notes and keyword chips, check the wording against the writing guidelines, and apply teacher-approved text to NEIS.',
+  [('oni-record/', 'Full tour →'), ('https://github.com/yang102948549/oni-record/releases', 'Windows beta ↗')]),
+ ('proctor', 'Oni Proctor', '#149c95', 'In development', 'dev', 'assets/proctor/assign.webp', 'Oni Proctor assignment table by teacher',
+  'Assigns exam proctors across rooms and periods from the schedule and each teacher’s conditions, keeps the load even, and exports the roster to Excel. Not yet released.',
+  [('oni-proctor/', 'Full tour →')]),
+]
+PLANNED = [
+ ('Oni Time', '#8b65d8', 'Planned', 'The next Oni tool, for school timetable work. Features and supported platforms will be announced during development.'),
+ ('Oni Enrollment', '#e58a32', 'Planned', 'A planned tool for elective course registration and seat management.'),
+]
+strip = ''.join(f'<a href="oni-{k}/"><span class="mark" style="--mark:{col}" aria-hidden="true"></span><b>{n}</b><span class="st">{st}</span></a>' for k, n, col, st, *_ in APPS)
+strip += ''.join(f'<a href="#apps"><span class="mark" style="--mark:{col}" aria-hidden="true"></span><b>{n}</b><span class="st">{st}</span></a>' for n, col, st, _ in PLANNED)
+cards = ''
+for k, n, col, st, stc, img, alt, desc, links in APPS:
+    ln = ''.join(f'<a href="{h}"' + (' target="_blank" rel="noopener"' if h.startswith('http') else '') + f'>{t}</a>' for h, t in links)
+    cards += (f'<article class="app-card" style="--mark:{col}"><a class="thumb" href="oni-{k}/" aria-label="{n} tour"><img src="{img}" alt="{alt}" loading="lazy" width="1440" height="900"></a>'
+              f'<div class="body"><div class="head"><span class="mark" aria-hidden="true"></span><h3>{n}</h3><span class="status {stc}">{st}</span></div><p>{desc}</p>'
+              f'<p class="micro">Windows desktop · Korean interface</p><div class="links">{ln}</div></div></article>')
+planned = ''.join(f'<article class="app-card" style="--mark:{col}"><div class="body"><div class="head"><span class="mark" aria-hidden="true"></span><h3>{n}</h3><span class="status">{st}</span></div><p>{d}</p></div></article>' for n, col, st, d in PLANNED)
+home = f'''<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Oni School — Tools for Korean school teachers</title>
+<meta name="description" content="Oni School is a family of desktop tools for Korean school teachers. Browse every app, its status, and a tour of how each one works.">
+<link rel="canonical" href="https://onischool.net/">
+<meta property="og:title" content="Oni School — Tools for Korean school teachers">
+<meta property="og:description" content="Oni School is a family of desktop tools for Korean school teachers. Browse every app, its status, and a tour of how each one works.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://onischool.net/">
+<meta property="og:image" content="https://onischool.net/assets/class/calendar.png">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body class="app-home">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+<a class="brand" href="#"><span class="mark" aria-hidden="true"></span>Oni School</a>
+<nav aria-label="Page navigation">
+<a href="#apps">Apps</a>
+<a href="#platform">Platform</a>
+<a href="#contact">Contact <span>↗</span></a>
+</nav>
+</header>
+<main id="main">
+<section class="hero wrap">
+<p class="eyebrow">Tools for teachers · Made in Korea</p>
+<h1>Less paperwork.<br><em>More time for teaching.</em></h1>
+<p class="lead">Oni School is a family of desktop tools for Korean school teachers. Each app takes on one part of school work, and each has its own page with a tour of the interface, its data handling and its release status.</p>
+<div class="actions"><a class="button primary" href="#apps">See the apps <span>↓</span></a><a class="button" href="#contact">About Oni School</a></div>
+<p class="micro">Two apps in beta · One in development · Two planned</p>
+<div class="steps five">{strip}</div>
+</section>
+<section class="chapter" id="apps"><div class="wrap">
+<div class="chapter-heading"><div><p class="eyebrow">The apps</p><h2>A focused tool for each part of the job.</h2></div><p>Open an app’s tour to see its screens, workflow and data handling. Each app is a separate download with its own release status.</p></div>
+<div class="apps">{cards}</div>
+<div class="apps two">{planned}</div>
+</div></section>
+<section class="tinted"><div class="wrap setup" id="platform">
+<p class="eyebrow">The platform</p><h2>Different jobs, one way of working.</h2>
+<div class="setup-grid">
+<article><b>1</b><h3>One look across every app</h3><p>A color-coded switch icon for each app, and the same calm layout, type and controls inside.</p></article>
+<article><b>2</b><h3>Built around Korean school work</h3><p>Korean interfaces that follow real school routines, including the steps that end in NEIS, the national school information system.</p></article>
+<article><b>3</b><h3>Data handling stated per app</h3><p>Storage differs from app to app, so each tour says what stays on the PC and what leaves it.</p></article>
+</div></div></section>
+<section class="storage wrap" id="contact">
+<p class="eyebrow">About Oni School</p><h2>Built from the everyday work of a school.</h2>
+<div class="data-grid">
+<article><span class="data-label">Who makes it</span><h3>A teacher, building for teachers</h3><p>Oni School is an education software project developed and operated by Oniaby, a Korean teacher building tools to reduce repetitive school administration.</p><p class="small">We distinguish available features from work that is still in development.</p></article>
+<article><span class="data-label">Contact</span><h3>Questions and feedback</h3><p class="contact-mail"><a href="mailto:oniaby@onischool.net">oniaby@onischool.net</a></p><button type="button" class="copy" data-copy-email>Copy email address</button><span id="copy-status" role="status" aria-live="polite"></span><p class="small">We welcome messages in Korean or English.</p></article>
+</div>
+</section>
+</main>
+<footer class="wrap footer">
+<a class="brand" href="#">Oni School</a>
+<span>© 2026 Oni School · Oniaby</span>
+<span><a href="oni-class/">Oni Class</a> · <a href="oni-record/">Oni Record</a> · <a href="oni-proctor/">Oni Proctor</a></span>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>
+'''
+open(ROOT + 'index.html', 'w', encoding='utf-8', newline='\n').write(home)
+print('home', len(home))

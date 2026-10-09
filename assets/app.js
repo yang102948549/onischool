@@ -14,3 +14,16 @@ if (dialog) {
     if (e.target === dialog) dialog.close();
   });
 }
+
+// Home: copy the contact address.
+const copy = document.querySelector("[data-copy-email]");
+if (copy)
+  copy.addEventListener("click", async () => {
+    const status = document.querySelector("#copy-status");
+    try {
+      await navigator.clipboard.writeText("oniaby@onischool.net");
+      status.textContent = "Email address copied.";
+    } catch {
+      status.textContent = "Select and copy oniaby@onischool.net.";
+    }
+  });
