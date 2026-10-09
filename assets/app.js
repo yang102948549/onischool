@@ -1,0 +1,16 @@
+// App detail pages: click a screen to open it at full size.
+const dialog = document.querySelector("#viewer");
+if (dialog) {
+  const image = dialog.querySelector("img");
+  document.querySelectorAll("[data-image]").forEach((button) =>
+    button.addEventListener("click", () => {
+      image.src = button.dataset.image;
+      image.alt = button.querySelector("img").alt;
+      dialog.showModal();
+    }),
+  );
+  document.querySelector("#close").addEventListener("click", () => dialog.close());
+  dialog.addEventListener("click", (e) => {
+    if (e.target === dialog) dialog.close();
+  });
+}
