@@ -426,14 +426,14 @@ kbd{font-family:var(--mono);font-size:.85em;border:1px solid var(--border);borde
 
     <section id="data">
       <div class="sec-head">
-        <div class="eyebrow">Data</div>
+        <div class="eyebrow">Data · reviewed 2026-10-09</div>
         <h2>What stays on the PC and what leaves it</h2>
-        <p>Student records are sensitive, so the app is explicit about where they go.</p>
+        <p>Student records are sensitive, so the app is explicit about where they go. <a href="../#data">Compare storage and transfer across Oni apps</a>.</p>
       </div>
       <div class="facts">
-        <div class="fact"><h3>Stored locally</h3><p>Sheets are saved in a file in the teacher's Windows user profile. Oni School runs no server that receives or stores student records.</p></div>
-        <div class="fact"><h3>The teacher's own AI key</h3><p>Drafting and checking use the Google Gemini API with a key the teacher provides. The key is kept on the PC, and requests go from the app straight to the API.</p></div>
-        <div class="fact"><h3>What is sent to the AI</h3><p>Only the notes and record text for the students the teacher selects, at the moment they press generate or check.</p></div>
+        <div class="fact"><h3>Stored locally</h3><p>Writing sheets, student cell contents, generated text, preferences and prompt templates are saved in store.json in the Windows user profile. The separate check window uses store-check.json. The reviewed app source does not sync these sheets to an Oni account cloud. These work files are not encrypted by the app.</p></div>
+        <div class="fact"><h3>The teacher's own AI key</h3><p>Drafting and checking use Google Gemini with the teacher's own API key. The desktop app protects the saved key using Electron safeStorage (Windows DPAPI); this does not encrypt the work sheets. Requests go directly from the desktop app to Google's API.</p></div>
+        <div class="fact"><h3>What is sent to the AI</h3><p>Generation and checking send task prompts and the selected work content to Google Gemini. Local file storage does not mean that AI processing stays offline. Review the content before requesting an AI operation.</p></div>
         <div class="fact"><h3>NEIS only on request</h3><p>Nothing is entered in NEIS until the teacher opens the apply dialog and confirms. The extension works only on the NEIS tab already open in the browser.</p></div>
       </div>
     </section>
@@ -461,7 +461,7 @@ kbd{font-family:var(--mono);font-size:.85em;border:1px solid var(--border);borde
 
   <footer>
     <span>© 2026 Oni School</span>
-    <span><a href="../">Oni School</a> · Oni Record</span>
+    <span><a href="../">Oni School</a> · <a href="../oni-class/">Oni Class</a> · Oni Record</span>
   </footer>
 </div>
 

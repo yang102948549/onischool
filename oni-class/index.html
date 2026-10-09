@@ -3,32 +3,32 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Oni School — 교사의 하루를 정리하는 도구</title>
+    <title>Oni Class — 일정부터 출결까지, 담임의 하루를 한곳에</title>
     <meta
       name="description"
-      content="교사를 위한 Oni Class, Oni Record와 학교 업무 도구. 실제 화면 구성, Windows 베타 다운로드, 앱별 데이터 보관·전송 범위를 확인하세요."
+      content="Oni Class의 캘린더, 학급 관리, 출결, 제출·명단과 데이터 저장 범위를 알아보세요. Windows 64비트 베타를 제공합니다."
     />
     <meta name="theme-color" content="#fafaf9" />
-    <link rel="canonical" href="https://onischool.net/" />
+    <link rel="canonical" href="https://onischool.net/oni-class/" />
     <meta
       property="og:title"
-      content="Oni School — 교사의 하루를 정리하는 도구"
+      content="Oni Class — 일정부터 출결까지, 담임의 하루를 한곳에"
     />
     <meta
       property="og:description"
-      content="교사를 위한 Oni Class, Oni Record와 학교 업무 도구. 실제 화면 구성, Windows 베타 다운로드, 앱별 데이터 보관·전송 범위를 확인하세요."
+      content="Oni Class의 캘린더, 학급 관리, 출결, 제출·명단과 데이터 저장 범위를 알아보세요. Windows 64비트 베타를 제공합니다."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://onischool.net/" />
-    <link rel="stylesheet" href="assets/site.css" />
-    <link rel="stylesheet" href="assets/class-tour.css" />
-    <script src="assets/site.js" defer></script>
+    <meta property="og:url" content="https://onischool.net/oni-class/" />
+    <link rel="stylesheet" href="../assets/site.css" />
+    <link rel="stylesheet" href="../assets/class-tour.css" />
+    <script src="../assets/site.js" defer></script>
   </head>
   <body>
     <a class="skip" href="#main">본문으로 건너뛰기</a>
     <div class="wrap">
       <header class="top">
-        <a class="brand" href="./"
+        <a class="brand" href="../"
           ><svg
             class="sw"
             style="--c: var(--text)"
@@ -42,41 +42,61 @@
           >Oni School</a
         >
         <nav aria-label="주요 메뉴">
-          <a href="#apps">프로그램</a><a href="oni-class/">Oni Class</a
-          ><a href="oni-record/">Oni Record</a><a href="#data">데이터 보관</a
-          ><a href="#contact">문의</a>
+          <a href="../#apps">프로그램</a><a href="../oni-class/">Oni Class</a
+          ><a href="../oni-record/">Oni Record</a
+          ><a href="../#data">데이터 보관</a><a href="../#contact">문의</a>
         </nav>
       </header>
       <main id="main">
         <div class="hero">
-          <div class="eyebrow">Tools for teachers · Made in Korea</div>
-          <h1>반복되는 학교 업무는 가볍게.<br />교실에 더 집중할 수 있게.</h1>
+          <div class="crumb"><a href="../">Oni School</a> / Oni Class</div>
+          <div class="brand">
+            <svg
+              class="sw"
+              style="--c: var(--class)"
+              viewBox="0 0 256 256"
+              width="28"
+              height="28"
+              aria-hidden="true"
+            >
+              <rect x="16" y="64" width="224" height="128" rx="64" />
+              <circle cx="176" cy="128" r="50" /></svg
+            >Oni Class
+          </div>
+          <h1>일정부터 출결까지,<br />담임의 하루를 한곳에.</h1>
           <p class="lead">
-            일정과 출결부터 학생부까지.<br />교사의 업무 흐름에 맞춘 작은
-            도구들을 만듭니다.
+            달력을 중심으로 학급의 일을 이어갑니다. 학생 명단, 출결, 제출 현황,
+            시간표와 수업 진도를 필요한 순간에 꺼내 보세요.
           </p>
-          <p class="english" lang="en">
-            Oni School builds tools for Korean teachers. Oni Class brings
-            classroom schedules and attendance together; Oni Record supports
-            student-record drafting and review with the teacher's own Gemini API
-            key.
-          </p>
-          <div class="cta">
-            <a class="btn primary" href="oni-class/">Oni Class 둘러보기</a
-            ><a class="btn" href="#apps">모든 프로그램</a>
-          </div>
           <div class="meta">
-            <span class="tag beta">Windows 베타 제공</span
-            ><span>앱별 데이터 저장 방식 안내</span>
+            <span class="tag beta">Beta</span><span>Windows · 64-bit</span
+            ><span>한국어 인터페이스</span><span>계정 로그인 필요</span>
           </div>
+          <div class="cta">
+            <a class="btn primary" href="#download">Windows 베타 다운로드</a
+            ><a class="btn" href="#workspace">화면 둘러보기</a>
+          </div>
+          <p class="english" lang="en">
+            A workspace for Korean homeroom teachers: calendars, class rosters,
+            attendance, submissions and timetables. Detailed student records
+            stay on the PC; selected records sync to the teacher's account for
+            mobile access.
+          </p>
+          <ul class="tour-links" aria-label="이 페이지의 내용">
+            <li><a href="#workspace">작업 화면</a></li>
+            <li><a href="#features">주요 기능</a></li>
+            <li><a href="#workflow">사용 흐름</a></li>
+            <li><a href="#data">데이터 보관</a></li>
+            <li><a href="#download">설치와 지원 범위</a></li>
+          </ul>
         </div>
-        <section id="class">
+        <section id="workspace">
           <div class="sec-head">
-            <div class="eyebrow">Inside Oni Class</div>
-            <h2>하루의 흐름을 한 화면에서.</h2>
+            <div class="eyebrow">Your classroom workspace</div>
+            <h2>익숙한 메뉴, 연결된 하루.</h2>
             <p>
-              달력에서 날짜를 고르면 그날의 일정, 할 일과 출결을 함께
-              확인합니다. 왼쪽 메뉴를 눌러 실제 앱의 작업 구성을 살펴보세요.
+              왼쪽에서 업무를 고르고, 가운데에서 내용을 보고, 오른쪽에서 선택한
+              날짜의 세부 기록을 확인합니다.
             </p>
           </div>
           <figure class="preview" data-demo>
@@ -108,37 +128,37 @@
                   >
                     <button
                       type="button"
-                      id="home-tab-calendar"
+                      id="class-tab-calendar"
                       role="tab"
                       aria-selected="true"
-                      aria-controls="home-calendar"
+                      aria-controls="class-calendar"
                       tabindex="0"
                     >
                       캘린더</button
                     ><button
                       type="button"
-                      id="home-tab-students"
+                      id="class-tab-students"
                       role="tab"
                       aria-selected="false"
-                      aria-controls="home-students"
+                      aria-controls="class-students"
                       tabindex="-1"
                     >
                       학급 관리</button
                     ><button
                       type="button"
-                      id="home-tab-attendance"
+                      id="class-tab-attendance"
                       role="tab"
                       aria-selected="false"
-                      aria-controls="home-attendance"
+                      aria-controls="class-attendance"
                       tabindex="-1"
                     >
                       출결 관리</button
                     ><button
                       type="button"
-                      id="home-tab-surveys"
+                      id="class-tab-surveys"
                       role="tab"
                       aria-selected="false"
-                      aria-controls="home-surveys"
+                      aria-controls="class-surveys"
                       tabindex="-1"
                     >
                       제출·명단
@@ -157,9 +177,9 @@
                     ><span class="sample-status">소개용 예시</span>
                   </div>
                   <div
-                    id="home-calendar"
+                    id="class-calendar"
                     role="tabpanel"
-                    aria-labelledby="home-tab-calendar"
+                    aria-labelledby="class-tab-calendar"
                     tabindex="0"
                   >
                     <div class="calendar-split">
@@ -249,9 +269,9 @@
                     </div>
                   </div>
                   <div
-                    id="home-students"
+                    id="class-students"
                     role="tabpanel"
-                    aria-labelledby="home-tab-students"
+                    aria-labelledby="class-tab-students"
                     tabindex="0"
                     hidden
                   >
@@ -294,9 +314,9 @@
                     </div>
                   </div>
                   <div
-                    id="home-attendance"
+                    id="class-attendance"
                     role="tabpanel"
-                    aria-labelledby="home-tab-attendance"
+                    aria-labelledby="class-tab-attendance"
                     tabindex="0"
                     hidden
                   >
@@ -342,9 +362,9 @@
                     </div>
                   </div>
                   <div
-                    id="home-surveys"
+                    id="class-surveys"
                     role="tabpanel"
-                    aria-labelledby="home-tab-surveys"
+                    aria-labelledby="class-tab-surveys"
                     tabindex="0"
                     hidden
                   >
@@ -399,296 +419,239 @@
               가상입니다. 실제 앱 화면·버전과 일부 차이가 있습니다.
             </figcaption>
           </figure>
-          <div class="cta" style="margin-top: 22px">
-            <a href="oni-class/">Oni Class 기능과 사용 흐름 자세히 보기 →</a>
-          </div>
-        </section>
-        <section id="apps">
-          <div class="sec-head">
-            <div class="eyebrow">The apps</div>
-            <h2>필요한 업무에 맞는 프로그램을 고르세요.</h2>
-            <p>
-              같은 스위치 아이콘과 차분한 화면, 업무마다 다른 도구. 현재 배포
-              상태와 사용 환경을 함께 안내합니다.
-            </p>
-          </div>
-          <div class="app-list">
-            <article class="app-row">
-              <svg
-                class="sw"
-                style="--c: var(--class)"
-                viewBox="0 0 256 256"
-                width="28"
-                height="28"
-                aria-hidden="true"
-              >
-                <rect x="16" y="64" width="224" height="128" rx="64" />
-                <circle cx="176" cy="128" r="50" />
-              </svg>
-              <div>
-                <h3>Oni Class <small>학급 일정·출결 관리</small></h3>
-                <p>
-                  일정, 시간표, 학생 명단, 출결과 제출 현황을 한 작업 공간에서
-                  정리합니다. Windows 데스크톱을 중심으로 일부 기록을 모바일과
-                  연결합니다.
-                </p>
-                <div class="app-links">
-                  <a href="oni-class/">앱 자세히 보기 →</a
-                  ><a
-                    href="https://github.com/yang102948549/oni-class/releases/tag/v0.1.1-beta.9"
-                    >Windows 베타 다운로드</a
-                  >
-                </div>
-              </div>
-              <span class="tag beta">Beta</span>
+          <div class="feature-grid" style="margin-top: 26px">
+            <article class="feature-item">
+              <div class="number">01</div>
+              <h3>업무별 사이드바</h3>
+              <p>캘린더, 학급 관리, 출결, 제출·명단을 한 자리에서 오갑니다.</p>
             </article>
-            <article class="app-row">
-              <svg
-                class="sw"
-                style="--c: var(--record)"
-                viewBox="0 0 256 256"
-                width="28"
-                height="28"
-                aria-hidden="true"
-              >
-                <rect x="16" y="64" width="224" height="128" rx="64" />
-                <circle cx="176" cy="128" r="50" />
-              </svg>
-              <div>
-                <h3>Oni Record <small>Oni생기부</small></h3>
-                <p>
-                  관찰 메모와 키워드로 학생부 초안을 작성하고, 기재 내용과
-                  바이트 수를 점검합니다. 교사가 확인한 문장을 나이스에
-                  반영합니다.
-                </p>
-                <div class="app-links">
-                  <a href="oni-record/">앱 자세히 보기 →</a
-                  ><a
-                    href="https://github.com/yang102948549/oni-record/releases"
-                    >Windows 베타 다운로드</a
-                  >
-                </div>
-              </div>
-              <span class="tag beta">Beta</span>
+            <article class="feature-item">
+              <div class="number">02</div>
+              <h3>기록이 보이는 달력</h3>
+              <p>
+                일정과 할 일, 출결을 날짜 안에 표시해 하루의 맥락을 유지합니다.
+              </p>
             </article>
-            <article class="app-row">
-              <svg
-                class="sw"
-                style="--c: var(--proctor)"
-                viewBox="0 0 256 256"
-                width="28"
-                height="28"
-                aria-hidden="true"
-              >
-                <rect x="16" y="64" width="224" height="128" rx="64" />
-                <circle cx="176" cy="128" r="50" />
-              </svg>
-              <div>
-                <h3>Oni Proctor <small>시험 감독 배정</small></h3>
-                <p>
-                  교실·교시별 시험 감독 배정을 정리하는 도구를 개발하고
-                  있습니다. 배포 일정과 사용 범위는 준비되는 대로 안내합니다.
-                </p>
-              </div>
-              <span class="tag dev">개발 중</span>
-            </article>
-            <article class="app-row">
-              <svg
-                class="sw"
-                style="--c: var(--time)"
-                viewBox="0 0 256 256"
-                width="28"
-                height="28"
-                aria-hidden="true"
-              >
-                <rect x="16" y="64" width="224" height="128" rx="64" />
-                <circle cx="176" cy="128" r="50" />
-              </svg>
-              <div>
-                <h3>Oni Time <small>시간표</small></h3>
-                <p>
-                  학교 시간표 업무를 위한 다음 도구입니다. 구체적인 기능과 지원
-                  환경은 개발 단계에서 안내합니다.
-                </p>
-              </div>
-              <span class="tag plan">기획 중</span>
-            </article>
-            <article class="app-row">
-              <svg
-                class="sw"
-                style="--c: var(--enroll)"
-                viewBox="0 0 256 256"
-                width="28"
-                height="28"
-                aria-hidden="true"
-              >
-                <rect x="16" y="64" width="224" height="128" rx="64" />
-                <circle cx="176" cy="128" r="50" />
-              </svg>
-              <div>
-                <h3>Oni Enrollment <small>수강신청</small></h3>
-                <p>
-                  학생의 선택과목 신청과 정원 관리를 위한 도구를 준비하고
-                  있습니다.
-                </p>
-              </div>
-              <span class="tag plan">기획 중</span>
+            <article class="feature-item">
+              <div class="number">03</div>
+              <h3>선택한 날짜의 상세</h3>
+              <p>날짜를 이동하며 그날 챙길 일과 수업을 이어서 확인합니다.</p>
             </article>
           </div>
         </section>
-        <section id="record">
+        <section id="features">
           <div class="sec-head">
-            <div class="eyebrow">Inside Oni Record</div>
-            <h2>관찰에서 초안으로, 점검에서 최종 기록으로.</h2>
-            <p>
-              학생별 메모를 표에서 정리하고, 작성 → 도우미 → 점검 → 나이스
-              반영의 흐름으로 작업합니다. AI가 만든 문장은 교사가 확인합니다.
-            </p>
+            <div class="eyebrow">Features</div>
+            <h2>교사의 반복 업무를 연결합니다.</h2>
           </div>
           <div class="feature-grid">
             <article class="feature-item">
-              <div class="number">01 · WRITE</div>
-              <h3>교사의 관찰로 시작</h3>
-              <p>학생별 활동과 키워드를 바탕으로 초안을 작성합니다.</p>
+              <div class="number">01</div>
+              <h3>일정과 할 일</h3>
+              <p>
+                학교 일정과 개인 할 일을 달력에서 함께 확인합니다. 날짜를
+                선택하면 하루 상세 패널이 열리고, 할 일은 체크로 완료할 수
+                있습니다.
+              </p>
             </article>
             <article class="feature-item">
-              <div class="number">02 · REVIEW</div>
-              <h3>수정 전후를 나란히</h3>
-              <p>점검 결과와 변경 이유를 비교하고 적용할 내용을 고릅니다.</p>
+              <div class="number">02</div>
+              <h3>명단과 상담 기록</h3>
+              <p>
+                학생 정보를 표에서 수정하고, 학생별 상담·관찰 내용을 정리합니다.
+                자세한 학생 정보는 PC에 남깁니다.
+              </p>
             </article>
             <article class="feature-item">
-              <div class="number">03 · APPLY</div>
-              <h3>확인한 기록을 반영</h3>
-              <p>지원하는 나이스 화면에 선택한 기록을 전달합니다.</p>
+              <div class="number">03</div>
+              <h3>출결 기록과 집계</h3>
+              <p>
+                학생과 출결 칩을 선택해 기록하고 날짜별·학생별로 확인합니다.
+                나이스 반영은 별도 확인 흐름을 거칩니다.
+              </p>
+            </article>
+            <article class="feature-item">
+              <div class="number">04</div>
+              <h3>제출·명단 관리</h3>
+              <p>
+                가정통신문, 신청서와 활동 명단을 학생별로 체크합니다. 제출
+                여부나 선택 항목을 표에서 확인합니다.
+              </p>
+            </article>
+            <article class="feature-item">
+              <div class="number">05</div>
+              <h3>시간표와 수업 진도</h3>
+              <p>
+                컴시간에서 날짜가 속한 주의 시간표를 불러오고, 수업 진도는
+                별도로 기록합니다. 조회할 수 없는 주는 앱에서 안내합니다.
+              </p>
+            </article>
+            <article class="feature-item">
+              <div class="number">06</div>
+              <h3>바탕화면 위젯</h3>
+              <p>
+                달력과 오늘 수업 등 필요한 정보를 바탕화면에서 확인합니다. 전체
+                앱을 열지 않고도 하루의 흐름을 살펴봅니다.
+              </p>
             </article>
           </div>
-          <div class="cta" style="margin-top: 24px">
-            <a class="btn" href="oni-record/">Oni Record 화면과 기능 보기</a>
+        </section>
+        <section id="workflow">
+          <div class="sec-head">
+            <div class="eyebrow">A day with Oni Class</div>
+            <h2>아침 확인부터, 하루의 마무리까지.</h2>
+          </div>
+          <ol class="flow-steps">
+            <li>
+              <b>학교와 학급 준비</b>
+              <p>
+                계정에 로그인하고 학교·학급을 설정합니다. 학생 명단과 일정을
+                가져와 작업 공간을 준비합니다.
+              </p>
+            </li>
+            <li>
+              <b>하루 동안 바로 기록</b>
+              <p>
+                달력에서 일정을 확인하고 출결과 제출 여부를 정리합니다. 상세
+                학생 기록은 PC에서 관리합니다.
+              </p>
+            </li>
+            <li>
+              <b>확인하고 반영</b>
+              <p>
+                출결 내용을 검토한 뒤 지원하는 나이스 화면에 반영합니다. 다른
+                PC로 옮길 자료는 앱의 백업 기능으로 보관합니다.
+              </p>
+            </li>
+          </ol>
+          <div class="callout">
+            <b>나이스 연결 범위</b><br />Chrome·Edge 확장과 같은 PC의 연결
+            프로그램을 사용합니다. 검토한 베타 안내의 지원 도메인은 충북
+            <code>cbe.neis.go.kr</code>이며, 학교 내부망에서 사용하는
+            흐름입니다. 다른 교육청이나 외부·EVPN 환경까지 지원한다고 안내하지
+            않습니다.
           </div>
         </section>
         <section id="data">
           <div class="sec-head">
-            <div class="eyebrow">Data, app by app</div>
-            <h2>어디에 저장되고, 언제 전송되는지.</h2>
+            <div class="eyebrow">Storage & sync</div>
+            <h2>PC에 남는 기록과, 기기를 잇는 기록.</h2>
             <p>
-              앱마다 다릅니다. 로컬에 저장되는 자료와 동기화·AI·나이스 연결로
-              전송되는 자료를 구분합니다.
+              Oni Class는 로컬 저장소와 계정 클라우드를 함께 사용합니다. 모든
+              자료가 클라우드에 올라가는 것도, 모든 자료가 PC에만 남는 것도
+              아닙니다.
             </p>
           </div>
-          <div
-            class="table-scroll"
-            tabindex="0"
-            aria-label="앱별 데이터 저장 및 전송 범위"
-          >
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th scope="col">프로그램</th>
-                  <th scope="col">PC에 저장하는 내용</th>
-                  <th scope="col">외부로 전송하는 내용</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">
-                    Oni Class<small>로컬 + 계정 동기화</small>
-                  </th>
-                  <td>
-                    학생 상세 정보, 학적, 상담·관찰 기록, 좌석 배치, 메모, 수업
-                    진도, 앱 설정 및 가져오기 이력. 동기화 자료의 로컬 사본도
-                    보관합니다.<small
-                      >Windows SQLite 저장소의 기록 본문은 DPAPI로
-                      암호화합니다.</small
-                    >
-                  </td>
-                  <td>
-                    현재 소스 기준으로 일정·할 일, 출결, 제출·명단, 시간표 및
-                    선택 학급의 최소 학생 명단을 계정 클라우드에 동기화합니다.
-                    최소 명단에는 학생 ID·이름·번호와 학년도·학년·반이
-                    포함됩니다.<small
-                      >나이스 출결은 사용자가 반영을 요청할 때 전송합니다. 배포
-                      버전과 계정 이용 상태에 따라 동기화 범위가 달라질 수
-                      있습니다.</small
-                    >
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    Oni Record<small>로컬 파일 + AI 요청</small>
-                  </th>
-                  <td>
-                    작성 시트·학생별 셀 내용·생성 결과·화면 설정·프롬프트는 로컬
-                    JSON 파일에, 교차점검 창 자료는 별도 JSON 파일에 저장합니다.
-                    개인 API 키는 OS 암호화 저장을 사용합니다.<small
-                      >작업 JSON 전체가 암호화된다는 의미는 아닙니다.</small
-                    >
-                  </td>
-                  <td>
-                    AI 생성·점검 시 프롬프트와 선택한 작업의 내용이 개인 API
-                    키를 통해 Google Gemini API로 전송됩니다. 사용자 요청으로
-                    나이스 기록을 읽거나 반영합니다.<small
-                      >현재 검토한 소스에는 작업 시트의 계정 클라우드 동기화가
-                      없습니다.</small
-                    >
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    Oni Proctor<br />Oni Time<br />Oni Enrollment
-                  </th>
-                  <td colspan="2">
-                    개발 또는 기획 단계입니다. 각 앱의 저장 방식과 외부 전송
-                    범위는 배포 구현을 확인한 뒤 별도로 안내합니다.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="facts">
+            <div class="fact">
+              <h3>PC에 보관하는 상세 기록</h3>
+              <p>
+                학생 상세 정보·학적, 상담·관찰 기록, 좌석 배치, 메모, 수업 진도,
+                설정과 가져오기 이력은 현재 동기화 대상에서 제외됩니다.
+              </p>
+            </div>
+            <div class="fact">
+              <h3>계정으로 동기화하는 자료</h3>
+              <p>
+                현재 소스의 동기화 대상은 일정·할 일, 출결, 제출·명단, 시간표와
+                선택 학급의 최소 학생 명단입니다. 최소 명단은 학생 ID·이름·번호
+                및 학년도·학년·반을 포함합니다.
+              </p>
+            </div>
+            <div class="fact">
+              <h3>로컬 기록 본문 암호화</h3>
+              <p>
+                Windows의 SQLite 저장소에 기록과 백업을 보관하며, 기록 본문에
+                Windows DPAPI 암호화를 적용합니다. 다른 PC로 옮길 때는 앱의
+                백업·가져오기 기능을 사용하세요.
+              </p>
+            </div>
+            <div class="fact">
+              <h3>나이스 전송은 별도 흐름</h3>
+              <p>
+                교사가 요청한 출결 작업을 브라우저 확장과 로컬 연결 프로그램이
+                처리합니다. 나이스에 저장된 내용은 앱의 로컬 기록과 구분됩니다.
+              </p>
+            </div>
           </div>
           <p class="hint">
-            2026년 10월 9일 소스 검토 기준의 제품 안내입니다. 이전 버전의 저장
-            이력이 자동 삭제된다는 의미는 아니며, 현재 설치 버전의 안내도 함께
-            확인해 주세요.
+            2026년 10월 9일 현재 소스 기준. 설치 버전·계정 이용 상태에 따라 제공
+            범위가 다를 수 있습니다. 로그인·이용 상태 확인과 클라우드 동기화에는
+            네트워크가 필요합니다.
           </p>
-          <div class="callout">
-            Oni Record의 현재 AI 제공자는 Google Gemini입니다. 생성·점검 요청 시
-            선택한 작업 내용이 AI 제공자에게 전송되며, 결과는 교사가 검토합니다.
+          <p><a href="../#data">모든 앱의 저장 방식 비교 →</a></p>
+        </section>
+        <section id="download">
+          <div class="download-box">
+            <div class="eyebrow">Get started</div>
+            <h2>Windows에서 시작하세요.</h2>
+            <p>
+              확인된 공개 설치본은 <strong>v0.1.1-beta.9</strong>입니다. 최신
+              배포 여부와 변경 내용은 GitHub 릴리스에서 확인할 수 있습니다.
+            </p>
+            <div class="cta">
+              <a
+                class="btn primary"
+                href="https://github.com/yang102948549/oni-class/releases/download/v0.1.1-beta.9/OniClass_0.1.1-beta.9_x64-setup.exe"
+                >Windows x64 설치파일</a
+              ><a
+                class="btn"
+                href="https://github.com/yang102948549/oni-class/releases"
+                >릴리스와 변경 내용</a
+              >
+            </div>
+            <p class="hint">
+              베타 프로그램입니다. 초기 설치와 계정 로그인에는 인터넷 연결이
+              필요하며, WebView2가 없으면 설치 과정에서 내려받습니다. 지원·이용
+              권한 문의:
+              <a href="mailto:oniaby@onischool.net">oniaby@onischool.net</a>
+            </p>
           </div>
         </section>
-        <section id="contact">
-          <div class="about-grid">
-            <div>
-              <div class="sec-head">
-                <div class="eyebrow">About Oni School</div>
-                <h2>학교의 반복 업무에서 시작했습니다.</h2>
-              </div>
-              <p>
-                Oni School은 교사가 학교 현장에서 겪는 반복 업무를 줄이기 위해
-                만드는 교육 도구 프로젝트입니다. 운영·개발은 Oniaby가 맡고
-                있습니다.
-              </p>
-              <p>
-                일정과 출결을 챙기는 일, 학생의 성장을 기록하는 일, 시험 감독을
-                배정하는 일을 각각의 앱으로 정리합니다. 현재 제공하는 기능과
-                앞으로 만들 기능을 구분해 안내합니다.
-              </p>
-            </div>
-            <div class="contact-card">
-              <div class="eyebrow">Contact</div>
-              <h3 style="margin: 12px 0">사용 문의와 피드백</h3>
-              <p>
-                <a href="mailto:oniaby@onischool.net">oniaby@onischool.net</a>
-              </p>
-              <button type="button" data-copy-email>메일 주소 복사</button
-              ><span id="copy-status" role="status" aria-live="polite"></span
-              ><small class="hint">한국어와 영어로 문의할 수 있습니다.</small>
-            </div>
+        <section id="faq">
+          <div class="sec-head">
+            <div class="eyebrow">Before you begin</div>
+            <h2>설치 전에 확인해 주세요.</h2>
           </div>
+          <details class="faq">
+            <summary>휴대폰에서도 사용할 수 있나요?</summary>
+            <p>
+              같은 계정으로 연결하는 모바일 웹 화면이 있습니다. PC의 전체 기능을
+              그대로 제공하는 방식은 아니며, 현재 소스에서는
+              일정·출결·제출·명단과 시간표를 위한 모바일 기능을 제공합니다. 학생
+              상세 정보 수정은 PC에서 합니다.
+            </p>
+          </details>
+          <details class="faq">
+            <summary>AI API 키가 필요한가요?</summary>
+            <p>
+              Oni Class의 일정·명단·출결 관리 흐름에는 개인 AI API 키가 필요하지
+              않습니다. 개인 Gemini API 키를 사용하는 학생부 작성·점검 기능은
+              별도 앱인 <a href="../oni-record/">Oni Record</a>에서 제공합니다.
+            </p>
+          </details>
+          <details class="faq">
+            <summary>나이스 확장은 어떻게 연결하나요?</summary>
+            <p>
+              앱의 나이스 연결 안내에 따라 확장을 설치하고 연결합니다. 검토한
+              베타 안내는 웹스토어 승인 전 직접 설치 경로를 설명합니다. 학교에서
+              확장이나 로컬 연결을 차단하는 경우에는 사용할 수 없습니다.
+            </p>
+          </details>
+          <details class="faq">
+            <summary>업데이트와 백업은 어디서 하나요?</summary>
+            <p>
+              설정 → 앱 업데이트에서 새 버전을 확인합니다. 중요한 작업을
+              저장하고 진행 중인 나이스 반영을 마친 뒤 업데이트하세요. 학생 상세
+              기록을 다른 PC로 옮길 때는 앱의 백업 기능을 사용합니다.
+            </p>
+          </details>
         </section>
       </main>
       <footer>
         <span>© 2026 Oni School · Oniaby</span
         ><span
-          ><a href="#data">앱별 데이터 안내</a> ·
+          ><a href="../#data">앱별 데이터 안내</a> ·
           <a href="mailto:oniaby@onischool.net">문의하기</a></span
         >
       </footer>
