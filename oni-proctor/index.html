@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Oni Proctor — Fair exam proctor assignments, checked before you print</title>
+    <meta
+      name="description"
+      content="Oni Proctor is a Windows desktop app for Korean schools. Enter the exam schedule, rooms and teacher conditions, assign proctors automatically, adjust by hand and export the roster to Excel."
+    />
+    <meta name="theme-color" content="#fafaf9" />
+    <link rel="canonical" href="https://onischool.net/oni-proctor/" />
+    <meta property="og:title" content="Oni Proctor — Fair exam proctor assignments" />
+    <meta
+      property="og:description"
+      content="A tour of Oni Proctor: exam setup, teacher conditions, automatic assignment, manual adjustment and Excel export."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://onischool.net/oni-proctor/" />
+    <meta property="og:image" content="https://onischool.net/assets/proctor/assign.webp" />
+    <link rel="stylesheet" href="../assets/site.css" />
+    <link rel="stylesheet" href="../assets/tour.css" />
+  </head>
+  <body class="app-proctor">
+    <a class="skip" href="#main">Skip to content</a>
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <defs>
+        <symbol id="oni-sw" viewBox="0 0 256 256">
+          <rect x="16" y="64" width="224" height="128" rx="64" style="fill: var(--c)"></rect>
+          <circle cx="176" cy="128" r="50" style="fill: var(--knob)"></circle>
+        </symbol>
+      </defs>
+    </svg>
+
+    <div class="wrap">
+      <header class="top">
+        <a class="brand" href="../" aria-label="Oni School home"
+          ><svg class="sw" style="--c: var(--text)" viewBox="0 0 256 256" width="28" height="28" aria-hidden="true">
+            <rect x="16" y="64" width="224" height="128" rx="64"></rect>
+            <circle cx="176" cy="128" r="50" style="fill: var(--bg)"></circle></svg
+          >Oni School</a
+        >
+        <nav aria-label="Sections">
+          <a href="#screen">Screen</a><a href="#setup">Setup</a
+          ><a href="#teachers">Teachers</a><a href="#assign">Assign</a
+          ><a href="#adjust">Adjust</a><a href="#data">Data</a>
+        </nav>
+      </header>
+
+      <main id="main">
+        <!-- 1. Intro -->
+        <div class="hero">
+          <div class="crumb"><a href="../">Oni School</a> / Oni Proctor</div>
+          <div class="name">
+            <svg class="sw" style="--c: var(--proctor)" aria-hidden="true"><use href="#oni-sw"></use></svg>
+            Oni Proctor · Oni 감독
+          </div>
+          <span class="pill">Desktop app for assigning exam proctors</span>
+          <h1>Exam proctor rosters, <em>assigned fairly and checked before you print</em></h1>
+          <p class="lead">
+            Enter the exam schedule, the rooms and each teacher’s conditions.
+            Oni Proctor assigns every seat without breaking a rule, evens out
+            the load between teachers, lets you swap by hand, and exports the
+            roster to Excel.
+          </p>
+          <div class="meta">
+            <span class="tag dev">In development</span><span>Windows desktop</span
+            ><span aria-hidden="true">·</span><span>Korean interface</span
+            ><span aria-hidden="true">·</span><span>Works offline</span>
+          </div>
+          <div class="cta">
+            <a class="btn primary" href="#flow">See how it works</a
+            ><a class="btn" href="mailto:oniaby@onischool.net">Ask about release</a>
+          </div>
+          <figure class="shot">
+            <img
+              src="../assets/proctor/assign.webp"
+              width="1800"
+              height="1125"
+              alt="Oni Proctor assignment table: teachers in rows, exam days and periods in columns, each cell showing the room a teacher proctors, with a score for every teacher."
+            />
+            <figcaption>The app running its built-in sample exam. All names are fictional.</figcaption>
+          </figure>
+          <ol class="steps4 left" aria-label="What Oni Proctor does">
+            <li><b><span class="n">1</span> Set up</b><span>Exam days, periods, subjects and rooms</span></li>
+            <li><b><span class="n">2</span> Teachers</b><span>Subjects, homerooms and the periods each teacher can or cannot cover</span></li>
+            <li><b><span class="n">3</span> Assign</b><span>Automatic assignment that keeps every rule and balances the load</span></li>
+            <li><b><span class="n">4</span> Adjust and export</b><span>Swap by hand, then save the roster as Excel</span></li>
+          </ol>
+        </div>
+
+        <!-- 2. Before you start -->
+        <section id="start">
+          <div class="sec-head">
+            <div class="eyebrow r">Before you start</div>
+            <h2>It runs on one PC, <em>without the internet</em></h2>
+          </div>
+          <div class="need">
+            <h3>The assignment engine is <em style="font-style: normal; color: var(--accent)">built into the app</em></h3>
+            <ul>
+              <li>Setting up, assigning, adjusting, saving and exporting all work offline. Nothing else needs to be installed.</li>
+              <li>The internet is used only when you choose to import a teacher list or timetable from a Google Sheets link or from Comcigan’s public timetable data.</li>
+              <li>Exam and teacher data is kept on the PC. The app has no account and no cloud sync.</li>
+            </ul>
+            <div class="two">
+              <div>
+                <h4>What you prepare</h4>
+                <p>Exam dates and periods, the subjects for each grade, the rooms, and the teacher list with subjects and homerooms.</p>
+              </div>
+              <div class="rec">
+                <h4>What the app does not guess</h4>
+                <p>A homeroom, role or blocked class that is missing from your source is not filled in for you. The result is only as complete as the conditions you enter.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. Flow -->
+        <section id="flow">
+          <div class="sec-head">
+            <div class="eyebrow r">Flow</div>
+            <h2>The basic <em>workflow</em></h2>
+            <p>The left menu follows the order of the job: exam setup, teachers, the assignment table, then records.</p>
+          </div>
+          <ol class="steps4">
+            <li><span class="n">1</span><b>Exam setup</b><span>Rooms by grade, exam days, subjects per period, proctoring mode</span></li>
+            <li><span class="n">2</span><b>Teachers</b><span>Import the list, then set conditions and unavailable periods</span></li>
+            <li><span class="n">3</span><b>Auto assign</b><span>Rules first, then an even spread of duties</span></li>
+            <li class="on"><span class="n">4</span><b>Review and export</b><span>Check warnings, swap by hand, save as Excel</span></li>
+          </ol>
+          <ul class="ticks">
+            <li>Input is saved automatically a moment after you type, and <kbd>Ctrl</kbd>+<kbd>S</kbd> saves at once. The top bar shows the save status.</li>
+            <li>Changing the schedule or a teacher’s conditions does not wipe an assignment. It is marked as needing re-validation, and only seats that are no longer allowed are cleared.</li>
+            <li>Each exam is kept as its own record, so last term’s exam can be reopened or used as a starting point.</li>
+          </ul>
+        </section>
+
+        <!-- 4. Screen -->
+        <section id="screen">
+          <div class="sec-head">
+            <div class="eyebrow r">Screen</div>
+            <h2>How the screen <em>is laid out</em></h2>
+          </div>
+          <figure class="shot">
+            <div class="pinned">
+              <img
+                src="../assets/proctor/screen.webp"
+                width="1800"
+                height="1125"
+                loading="lazy"
+                alt="Oni Proctor exam setup screen with five numbered markers: new exam button, workspace menu, page tabs, top bar, and the work area with rooms by grade."
+              />
+              <span class="num" style="left: 17.5%; top: 10.3%">1</span>
+              <span class="num" style="left: 12%; top: 16.4%">2</span>
+              <span class="num" style="left: 40%; top: 17.5%">3</span>
+              <span class="num" style="left: 83%; top: 3%">4</span>
+              <span class="num" style="left: 52%; top: 62%">5</span>
+            </div>
+            <figcaption>Exam setup, with the sample exam loaded.</figcaption>
+          </figure>
+          <ol class="legend">
+            <li><span class="num">1</span><div><b>New exam</b><span>Start a blank exam, or open the sample to look around</span></div></li>
+            <li><span class="num">2</span><div><b>Workspace menu</b><span><span class="ko">시험 설정</span>, <span class="ko">교사 설정</span>, <span class="ko">배정표</span> and <span class="ko">기록</span>, in working order; the sidebar can be collapsed</span></div></li>
+            <li><span class="num">3</span><div><b>Page tabs</b><span>Each menu splits into two or three tabs, such as schedule and rooms, then mode and scoring</span></div></li>
+            <li><span class="num">4</span><div><b>Top bar</b><span>Current exam, undo and redo, license status, import and export of exam files</span></div></li>
+            <li><span class="num">5</span><div><b>Work area</b><span>Cards and tables you edit in place; chips open a picker</span></div></li>
+          </ol>
+        </section>
+
+        <!-- 5. Exam setup -->
+        <section id="setup">
+          <div class="sec-head">
+            <div class="eyebrow r">Setup</div>
+            <h2>Exam setup, <em>step by step</em></h2>
+            <p>The schedule decides which seats exist. A seat is a place a proctor is needed: a room in a period, or a corridor zone.</p>
+          </div>
+
+          <article class="guide">
+            <header><h3>일정·고사실 · Schedule and rooms</h3><span>시험 설정</span></header>
+            <div class="guide-body stack">
+              <figure class="shot">
+                <img src="../assets/proctor/schedule.webp" width="1800" height="1125" loading="lazy" alt="Rooms listed by grade, corridor zones, and three exam days shown as cards with a period by grade table of subjects." />
+              </figure>
+              <div class="guide-body wide" style="padding: 0">
+                <div>
+                  <ol class="guide-steps">
+                    <li><span class="num">1</span><div><b>Register rooms by grade</b><span>Add classes one at a time or several at once, then corridor zones and special rooms.</span></div></li>
+                    <li><span class="num">2</span><div><b>Add exam days and periods</b><span>Each day is a card with its own number of periods.</span></div></li>
+                    <li><span class="num">3</span><div><b>Type the subject into each cell</b><span>Arrow keys move between cells and <kbd>Enter</kbd> moves down, like a spreadsheet.</span></div></li>
+                    <li><span class="num">4</span><div><b>Split a cell when classes differ</b><span>Open the picker to add a second subject and choose which rooms each one applies to. Nothing changes until you confirm.</span></div></li>
+                  </ol>
+                  <p class="rule"><b>How seats are made.</b> A corridor seat is created only in periods that have an exam. If every subject in a period is self-study, no corridor seat is made.</p>
+                </div>
+                <figure class="shot dialog">
+                  <img src="../assets/proctor/room-picker.webp" width="1000" height="930" loading="lazy" alt="Dialog for a period: the subject English applied to rooms 1-1 and 1-2, with a second subject row ready to be added." />
+                  <figcaption>The subject and room picker for one period and grade.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </article>
+
+          <article class="guide">
+            <header><h3>감독 방식·배정 기준 · Mode and scoring</h3><span>시험 설정</span></header>
+            <div class="guide-body stack">
+              <figure class="shot">
+                <img src="../assets/proctor/settings.webp" width="1800" height="640" loading="lazy" alt="Settings: a switch for chief and assistant proctor mode, weights of 2 for classroom and 1 for corridor duty, and reference counts." />
+              </figure>
+              <div>
+                <ol class="guide-steps">
+                  <li><span class="num">1</span><div><b>Choose the proctoring mode</b><span>Regular mode places one proctor per room plus corridor duty. <span class="ko">정/부감독</span> mode places a chief and an assistant, with rooms you mark as single-proctor.</span></div></li>
+                  <li><span class="num">2</span><div><b>Set the weights</b><span>By default a classroom duty counts 2 points and a corridor duty 1. Any value of zero or more, including decimals, can be used.</span></div></li>
+                  <li><span class="num">3</span><div><b>Set reference counts</b><span>Limits such as classroom duties over the whole exam or corridor duties in a day raise a warning when exceeded.</span></div></li>
+                </ol>
+                <p class="rule"><b>Good to know.</b> Reference counts are warnings, not limits: they never block an assignment. In chief and assistant mode every duty counts as 1 point.</p>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <!-- 6. Teachers -->
+        <section id="teachers">
+          <div class="sec-head">
+            <div class="eyebrow r">Teachers</div>
+            <h2>Teachers and <em>their conditions</em></h2>
+            <p>Three tabs: the list itself, special teachers who proctor only in set periods, and the periods regular teachers cannot cover.</p>
+          </div>
+
+          <article class="guide">
+            <header><h3>교사 명단 · Teacher list</h3><span>교사 설정</span></header>
+            <div class="guide-body stack">
+              <figure class="shot">
+                <img src="../assets/proctor/teachers.webp" width="1800" height="1125" loading="lazy" alt="Teacher table with columns for name, subject, homeroom, blocked classes and role. Two teachers have special roles." />
+              </figure>
+              <div>
+                <ol class="guide-steps">
+                  <li><span class="num">1</span><div><b>Bring in the list</b><span>Type it, paste a table, open an Excel, CSV or TSV file, use a Google Sheets link, or search a school in Comcigan’s public data. A preview shows how columns were matched and which rows have problems.</span></div></li>
+                  <li><span class="num">2</span><div><b>Click a chip to set conditions</b><span>Subjects (more than one allowed), one homeroom class, and any classes the teacher must not proctor.</span></div></li>
+                  <li><span class="num">3</span><div><b>Set the role</b><span>Most are regular teachers. Roles such as roaming or corridor-only change where that teacher may be placed.</span></div></li>
+                </ol>
+                <p class="rule"><b>Why it matters.</b> A teacher is never placed in their own homeroom, in a blocked class, or in a period when their own subject is being examined. Those rules come from this table.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="guide">
+            <header><h3>특별교사 감독 설정 · Special teachers</h3><span>교사 설정</span></header>
+            <div class="guide-body stack">
+              <figure class="shot">
+                <img src="../assets/proctor/special.webp" width="1800" height="1000" loading="lazy" alt="A grid of exam days and periods with checkboxes for two special teachers, and a seat preference for each." />
+              </figure>
+              <div>
+                <ol class="guide-steps">
+                  <li><span class="num">1</span><div><b>Tick the periods they proctor</b><span>Part-time lecturers, non-subject, roaming and corridor-only teachers are placed only in the periods you tick, and are always used in those periods when possible.</span></div></li>
+                  <li><span class="num">2</span><div><b>Choose where they sit</b><span>Classroom and corridor, or corridor only. A “corridor first” teacher can still cover a classroom when proctors run short.</span></div></li>
+                  <li><span class="num">3</span><div><b>Or load from the timetable</b><span>Periods can be filled in from an imported timetable instead of ticking by hand.</span></div></li>
+                </ol>
+              </div>
+            </div>
+          </article>
+
+          <article class="guide">
+            <header><h3>감독불가 교사 설정 · Unavailable periods</h3><span>교사 설정</span></header>
+            <div class="guide-body stack">
+              <figure class="shot">
+                <img src="../assets/proctor/blocked.webp" width="1800" height="1125" loading="lazy" alt="A grid of regular teachers by exam period with checkboxes for periods they cannot proctor, and a reason field." />
+              </figure>
+              <div>
+                <ol class="guide-steps">
+                  <li><span class="num">1</span><div><b>Leave it empty by default</b><span>Regular teachers are available in every period unless you say otherwise.</span></div></li>
+                  <li><span class="num">2</span><div><b>Tick only what is not possible</b><span>A business trip or childcare hours, for example, with the reason written beside it.</span></div></li>
+                </ol>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <!-- 7. Assign -->
+        <section id="assign" class="band">
+          <div class="sec-head">
+            <div class="eyebrow r">Assign</div>
+            <h2>Automatic assignment: <em>rules first, then fairness</em></h2>
+            <p>One button works out the whole roster. Hard rules are never relaxed to fill a seat or to improve a score, and the same rules apply when you edit by hand.</p>
+          </div>
+          <figure class="shot">
+            <img src="../assets/proctor/assign.webp" width="1800" height="1125" loading="lazy" alt="Assignment result by teacher, with a summary of seats filled, unassigned seats, count warnings and unmet designated placements." />
+            <figcaption>The result by teacher. Gray cells show why a teacher is not free in that period, such as their own subject’s exam.</figcaption>
+          </figure>
+          <div class="cards2">
+            <div>
+              <h3><i>1</i>Rules that never bend</h3>
+              <p>No excluded teachers, no unavailable periods, no own homeroom or blocked class, no period with the teacher’s own subject, one seat per teacher per period, one teacher per seat.</p>
+            </div>
+            <div>
+              <h3><i>2</i>Priorities, in order</h3>
+              <ol class="kv">
+                <li>Place special teachers in the periods set for them</li>
+                <li>Fill as many seats as possible</li>
+                <li>Respect seat preferences</li>
+                <li>Narrow the gap between the highest and lowest score</li>
+                <li>Bring everyone closer to the average</li>
+              </ol>
+            </div>
+            <div>
+              <h3><i>3</i>About ten seconds</h3>
+              <p>The solver works for roughly ten seconds and returns the best roster it found. It states whether that roster was proven optimal or not. You can cancel, and the previous result is kept.</p>
+            </div>
+            <div>
+              <h3><i>4</i>Checked a second time</h3>
+              <p>A separate checker validates every result. The summary shows seats filled, unassigned seats, count warnings and unmet placements, so nothing is hidden behind a “done” message.</p>
+            </div>
+          </div>
+          <p class="sub" style="margin-top: 24px">A teacher’s score in regular mode is classroom duties × the classroom weight plus corridor duties × the corridor weight. <b>“Optimal” refers to the conditions you entered</b>: it does not mean that a condition missing from the input was taken into account.</p>
+        </section>
+
+        <!-- 8. Adjust -->
+        <section id="adjust" style="border-top: 0; padding-top: 0">
+          <div class="sec-head">
+            <div class="eyebrow r">Adjust</div>
+            <h2>Review, then <em>adjust by hand</em></h2>
+            <p>Real schools have exceptions. Manual changes are held as a draft until you apply them, and the rules are checked on every move.</p>
+          </div>
+          <ol class="steps4 three">
+            <li><span class="n">1</span><b>Review</b><span>Scores, empty seats and warnings, by teacher or by room</span></li>
+            <li><span class="n">2</span><b>Swap or move</b><span>Click two cells in the same period, or pick a teacher for a seat</span></li>
+            <li class="on"><span class="n">3</span><b>Apply changes</b><span>Validated and saved; until then you can undo or cancel</span></li>
+          </ol>
+          <figure class="shot" style="margin-top: 24px">
+            <img src="../assets/proctor/swap.webp" width="1800" height="1125" loading="lazy" alt="Teacher view with one cell selected. Cells in the same period that can be swapped with it are highlighted." />
+            <figcaption>Teacher view. Select a cell and the cells it can be exchanged with light up; clicking a second one swaps the two duties.</figcaption>
+          </figure>
+          <figure class="shot" style="margin-top: 24px">
+            <img src="../assets/proctor/rooms.webp" width="1800" height="700" loading="lazy" alt="Room view: rooms in rows, exam periods in columns, each cell naming the assigned proctor." />
+            <figcaption>Room view. Click a seat to see who can take it and why others cannot, then choose a teacher or clear the seat.</figcaption>
+          </figure>
+          <div class="split">
+            <figure class="shot">
+              <img src="../assets/proctor/verify.webp" width="800" height="335" loading="lazy" alt="Validation dialog listing one warning: a teacher has two corridor duties on one day against a reference of one." />
+              <figcaption>The validation list names the teacher, the day and the count behind each warning.</figcaption>
+            </figure>
+            <ul class="ticks">
+              <li>A swap or assignment that would break a rule is refused, and the reason is shown.</li>
+              <li>Changes stay in a draft state across pages until you apply them. Undo and cancel work on the draft.</li>
+              <li>Empty teacher cells can receive a duty, so a seat can be moved as well as swapped.</li>
+              <li>After a manual change, the earlier “proven optimal” label is no longer shown.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 9. Export -->
+        <section id="export">
+          <div class="sec-head">
+            <div class="eyebrow r">Export</div>
+            <h2>Print-ready Excel, <em>and files you can move</em></h2>
+          </div>
+          <div class="split" style="margin-top: 0">
+            <figure class="shot">
+              <img src="../assets/proctor/export.webp" width="800" height="735" loading="lazy" alt="Export dialog: pick exam days, choose a layout by teacher, by room or both, and include the full assignment table." />
+              <figcaption>Excel export options.</figcaption>
+            </figure>
+            <ul class="ticks">
+              <li>Daily rosters are laid out to print on A4 landscape. Pick which exam days to include.</li>
+              <li>Choose a roster by teacher, by room, or both side by side on one sheet.</li>
+              <li>A full table can be added, with each teacher’s total duties and score.</li>
+              <li>The whole exam can be exported as a JSON file to back it up or move it to another PC. An imported exam is added as a new record and never overwrites an existing one.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 10. Checklist -->
+        <section id="checklist">
+          <div class="sec-head">
+            <div class="eyebrow r">Checklist</div>
+            <h2>Check these <em>before you use it</em></h2>
+          </div>
+          <ul class="ticks plain" style="margin-top: 0">
+            <li>It is an installed Windows program.</li>
+            <li>Assignment, adjustment, saving and export work offline. Importing from Google Sheets or Comcigan needs the internet.</li>
+            <li>Review the imported list before assigning: homerooms, roles and class links that the source did not contain must be completed by hand.</li>
+            <li>Read the warnings and unassigned seats after every run. A finished run can still leave a seat empty when no teacher is allowed to take it.</li>
+            <li>Automatic saving protects against a crash, not against a lost PC. Keep a JSON export as a backup.</li>
+          </ul>
+        </section>
+
+        <!-- 11. Data -->
+        <section id="data">
+          <div class="sec-head">
+            <div class="eyebrow r">Data</div>
+            <h2>What stays on the PC and <em>what leaves it</em></h2>
+            <p>Based on the app’s documentation and source as of October 2026.</p>
+          </div>
+          <div class="facts">
+            <div class="fact"><h3>Stored locally</h3><p>Each exam is saved as a file in the Windows user profile, separate from the program folder, together with the last good copy. A damaged file is reopened from that copy and the app says so.</p></div>
+            <div class="fact"><h3>No account, no cloud sync</h3><p>The app does not upload teacher or exam data. Syncing to a cloud is outside its scope.</p></div>
+            <div class="fact"><h3>Online only when you import</h3><p>Fetching a Google Sheets link or Comcigan’s public timetable data is a request you start. It does not sign in to an account or keep syncing afterwards.</p></div>
+            <div class="fact"><h3>Calculated on the PC</h3><p>The assignment engine runs inside the app. The roster is not sent to a server to be solved.</p></div>
+          </div>
+        </section>
+
+        <!-- 12. Status -->
+        <section id="status" style="border-top: 0; padding-top: 0">
+          <div class="close">
+            <h2>In development,<br />not yet released</h2>
+            <p>Oni Proctor · Windows desktop app. There is no public download yet. Release and licensing details will be published here when it is ready.</p>
+            <div class="cta" style="justify-content: center">
+              <a class="btn" href="mailto:oniaby@onischool.net">Ask a question</a
+              ><a class="btn ghost" href="../#apps">All Oni apps</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <span>© 2026 Oni School · Oniaby</span>
+        <span><a href="../">Oni School</a> · <a href="../oni-class/">Oni Class</a> · <a href="../oni-record/">Oni Record</a> · Oni Proctor</span>
+      </footer>
+    </div>
+  </body>
+</html>

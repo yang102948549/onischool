@@ -1,5 +1,8 @@
-/* Oni Record product tour. Loads after site.css. Accent is the app's own red (--record). */
+/* Shared product-tour layout for app detail pages. Loads after site.css.
+   Each page sets its accent with a body class: .app-record (red), .app-proctor (teal). */
 :root {
+  --accent: var(--record);
+  --accent-soft: var(--record-soft);
   --ink: #2b2926;
   --ink-2: #3a3734;
   --on-ink: #ffffff;
@@ -36,12 +39,12 @@
 
 /* Type helpers */
 .eyebrow.r {
-  color: var(--record);
+  color: var(--accent);
 }
 h1 em,
 h2 em {
   font-style: normal;
-  color: var(--record);
+  color: var(--accent);
 }
 .ko {
   font-weight: 700;
@@ -76,7 +79,7 @@ h2 em {
   justify-self: start;
   padding: 6px 14px;
   border-radius: 999px;
-  background: var(--record);
+  background: var(--accent);
   color: #fff;
   font-size: 13px;
   font-weight: 700;
@@ -150,7 +153,7 @@ h2 em {
 .steps4 .n {
   font-size: 24px;
   font-weight: 900;
-  color: var(--record);
+  color: var(--accent);
   line-height: 1.2;
 }
 .steps4 b {
@@ -161,8 +164,8 @@ h2 em {
   font-size: 14px;
 }
 .steps4 li.on {
-  background: var(--record);
-  border-color: var(--record);
+  background: var(--accent);
+  border-color: var(--accent);
   color: #fff;
 }
 .steps4 li.on .n,
@@ -196,8 +199,8 @@ h2 em {
   top: 21px;
   width: 11px;
   height: 6px;
-  border-left: 2.5px solid var(--record);
-  border-bottom: 2.5px solid var(--record);
+  border-left: 2.5px solid var(--accent);
+  border-bottom: 2.5px solid var(--accent);
   transform: rotate(-45deg);
 }
 .ticks.plain li {
@@ -207,8 +210,8 @@ h2 em {
 
 /* Before you start */
 .need {
-  border: 2px solid var(--record);
-  background: var(--record-soft);
+  border: 2px solid var(--accent);
+  background: var(--accent-soft);
   border-radius: 16px;
   padding: 28px;
 }
@@ -226,7 +229,7 @@ h2 em {
   color: var(--text);
 }
 .need li::marker {
-  color: var(--record);
+  color: var(--accent);
 }
 .two {
   display: grid;
@@ -240,7 +243,7 @@ h2 em {
   border: 2px solid transparent;
 }
 .two > div.rec {
-  border-color: var(--record);
+  border-color: var(--accent);
 }
 .two h4 {
   margin: 0 0 6px;
@@ -273,7 +276,7 @@ h2 em {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: var(--record);
+  background: var(--accent);
   color: #fff;
   font-weight: 900;
   font-size: 14px;
@@ -316,7 +319,7 @@ h2 em {
 .guide > header span {
   padding: 3px 10px;
   border-radius: 999px;
-  background: var(--record);
+  background: var(--accent);
   font-size: 12.5px;
   font-weight: 700;
 }
@@ -385,7 +388,7 @@ h2 em {
 }
 .cards2 h3 i {
   font-style: normal;
-  color: var(--record);
+  color: var(--accent);
   margin-right: 6px;
 }
 .cards2 p {
@@ -465,7 +468,7 @@ h2 em {
   color: var(--text-2);
 }
 .criteria b {
-  color: var(--record);
+  color: var(--accent);
   margin-right: 6px;
 }
 h3.sub {
@@ -476,7 +479,7 @@ h3.sub {
 
 /* Closing call to action */
 .close {
-  background: var(--record);
+  background: var(--accent);
   color: #fff;
   border-radius: 20px;
   padding: 48px 28px;
@@ -531,4 +534,93 @@ h3.sub {
   .hero {
     padding: 40px 0 36px;
   }
+}
+
+/* Per-app accents */
+.app-record {
+  --accent: var(--record);
+  --accent-soft: var(--record-soft);
+}
+.app-proctor {
+  --accent: var(--proctor);
+  --accent-soft: var(--proctor-soft);
+}
+
+/* Numbered pins placed over a screenshot (positions set inline in %) */
+.pinned {
+  position: relative;
+}
+.pinned .num {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 3px var(--surface);
+  width: 26px;
+  height: 26px;
+  font-size: 13px;
+}
+.shot.dialog img {
+  max-width: 520px;
+  margin-inline: auto;
+}
+.guide-body.wide {
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+}
+.guide-body.stack {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 22px;
+}
+.guide-body .shot + .shot {
+  margin-top: 16px;
+}
+.kv {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  counter-reset: k;
+}
+.kv li {
+  counter-increment: k;
+  padding-left: 30px;
+  position: relative;
+  color: var(--on-ink-2);
+  font-size: 15px;
+}
+.kv li::before {
+  content: counter(k);
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 900;
+  display: grid;
+  place-items: center;
+}
+@media (max-width: 760px) {
+  .guide-body.wide {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .pinned .num {
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+    box-shadow: 0 0 0 2px var(--surface);
+  }
+}
+kbd {
+  font-family: var(--mono);
+  font-size: 0.85em;
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  padding: 0 5px;
+  background: var(--subtle);
+  color: var(--text);
+  white-space: nowrap;
 }

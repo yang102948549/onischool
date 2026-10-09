@@ -7,7 +7,8 @@ Static HTML product directory and product tours for https://onischool.net.
 - `oni-record/index.html`: Oni Record tour (intro, API key prerequisite, workflow, annotated screen, writing by record type, Assist, Check, NEIS, checklist, data). Follows the Figma sales detail page; screenshots in `assets/record/` are cropped from that file and use pseudonyms.
 - `assets/site.css`: shared design tokens and base styles.
 - `assets/class-tour.css`, `assets/site.js`: home and Oni Class layouts, demo tabs, copy-email button.
-- `assets/record-tour.css`: Oni Record tour layout.
+- `oni-proctor/index.html`: Oni Proctor tour, same template as Oni Record. Screenshots in `assets/proctor/` were captured from the app's own UI running its built-in sample exam (fictional names); the browser-preview save status was hidden.
+- `assets/tour.css`: shared tour layout for Oni Record and Oni Proctor. Each page sets its accent with a body class (`app-record`, `app-proctor`).
 
 ## Cloudflare Pages
 
