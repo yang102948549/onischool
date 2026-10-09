@@ -2,11 +2,12 @@
 
 Static HTML product directory and product tours for https://onischool.net.
 
-- `index.html`: program directory, Oni Class preview, data comparison and contact.
+- `index.html`: ecosystem hub. Hero, app directory (every app with status and links to its tour), what the apps share, about and contact. No per-app demos or data tables here; those live on each app page.
 - `oni-class/index.html`: Oni Class tour, download and storage details.
-- `oni-record/index.html`: existing Oni Record tour with corrected storage details.
-- `assets/site.css`: original shared design tokens and base styles.
-- `assets/class-tour.css`, `assets/site.js`: responsive product layouts and accessible demo tabs.
+- `oni-record/index.html`: Oni Record tour (intro, API key prerequisite, workflow, annotated screen, writing by record type, Assist, Check, NEIS, checklist, data). Follows the Figma sales detail page; screenshots in `assets/record/` are cropped from that file and use pseudonyms.
+- `assets/site.css`: shared design tokens and base styles.
+- `assets/class-tour.css`, `assets/site.js`: home and Oni Class layouts, demo tabs, copy-email button.
+- `assets/record-tour.css`: Oni Record tour layout.
 
 ## Cloudflare Pages
 

@@ -1,469 +1,364 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Oni Record · Oni School</title>
-<meta name="description" content="Oni Record is a Windows desktop app for Korean teachers: write, check and apply student life records in one spreadsheet-like table, with data kept on the teacher's own PC.">
-<meta property="og:title" content="Oni Record · Oni School">
-<meta property="og:description" content="Write, check and apply student life records in one table. A tour of the Oni Record interface.">
-<meta property="og:type" content="website">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
-<link rel="stylesheet" href="../assets/site.css">
-<style>
-/* Oni Record detail page. Mock-ups use the app's own palette (--m-*) so they read as the product, not the site. */
-:root{
-  --m-wall:#f7f7f5; --m-panel:#ffffff; --m-line:#e9e9e7; --m-text:#37352f; --m-muted:#787774;
-  --m-head:#eef2f8; --m-grid:#e6e6e6; --m-accent:#e05252; --m-sel:rgba(224,82,82,.1); --m-hover:rgba(0,0,0,.045);
-  --m-del:#fbe4e4; --m-add:#e2f3e6;
-}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --m-wall:#1c1c1e; --m-panel:#232326; --m-line:#38383a; --m-text:#f2f2f4; --m-muted:#8e8e93;
-  --m-head:#2b2d33; --m-grid:#383838; --m-accent:#ee6b6b; --m-sel:rgba(238,107,107,.16); --m-hover:rgba(255,255,255,.06);
-  --m-del:#4a2626; --m-add:#1f3b28;
-}}
-:root[data-theme="dark"]{
-  --m-wall:#1c1c1e; --m-panel:#232326; --m-line:#38383a; --m-text:#f2f2f4; --m-muted:#8e8e93;
-  --m-head:#2b2d33; --m-grid:#383838; --m-accent:#ee6b6b; --m-sel:rgba(238,107,107,.16); --m-hover:rgba(255,255,255,.06);
-  --m-del:#4a2626; --m-add:#1f3b28;
-}
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Oni Record — Write and check student records in one table</title>
+    <meta
+      name="description"
+      content="Oni Record is a Windows desktop app for Korean teachers. Type like a spreadsheet, pick keyword chips, draft with AI, check against the writing guidelines and apply to NEIS."
+    />
+    <meta name="theme-color" content="#fafaf9" />
+    <link rel="canonical" href="https://onischool.net/oni-record/" />
+    <meta
+      property="og:title"
+      content="Oni Record — Write and check student records in one table"
+    />
+    <meta
+      property="og:description"
+      content="A tour of Oni Record: the screen, writing by record type, keyword chips, AI checking and applying to NEIS."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://onischool.net/oni-record/" />
+    <meta
+      property="og:image"
+      content="https://onischool.net/assets/record/hero.webp"
+    />
+    <link rel="stylesheet" href="../assets/site.css" />
+    <link rel="stylesheet" href="../assets/record-tour.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <defs>
+        <symbol id="oni-sw" viewBox="0 0 256 256">
+          <rect x="16" y="64" width="224" height="128" rx="64" style="fill: var(--c)"></rect>
+          <circle cx="176" cy="128" r="50" style="fill: var(--knob)"></circle>
+        </symbol>
+      </defs>
+    </svg>
 
-.crumb{font-size:14px;font-weight:500;color:var(--muted)}
-.crumb a{color:var(--text-2)}
+    <div class="wrap">
+      <header class="top">
+        <a class="brand" href="../" aria-label="Oni School home"
+          ><svg class="sw" style="--c: var(--text)" viewBox="0 0 256 256" width="28" height="28" aria-hidden="true">
+            <rect x="16" y="64" width="224" height="128" rx="64"></rect>
+            <circle cx="176" cy="128" r="50" style="fill: var(--bg)"></circle></svg
+          >Oni School</a
+        >
+        <nav aria-label="Sections">
+          <a href="#screen">Screen</a><a href="#write">Write</a
+          ><a href="#assist">Assist</a><a href="#check">Check</a
+          ><a href="#neis">NEIS</a><a href="#data">Data</a>
+        </nav>
+      </header>
 
-/* Hero */
-.hero{padding-block:56px 48px;display:grid;gap:22px}
-.hero .name{display:flex;align-items:center;gap:12px;font-size:15px;font-weight:700;color:var(--text-2)}
-.hero .name .sw{width:34px;height:34px}
-.hero h1{font-size:clamp(32px,6vw,54px);line-height:1.14;letter-spacing:-.03em;font-weight:900;max-width:18ch}
-.hero p.lead{font-size:clamp(17px,2.2vw,19px);color:var(--text-2);max-width:60ch;margin:0}
-.meta{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;font-size:14px;color:var(--text-2)}
-.meta .dot{color:var(--border)}
+      <main id="main">
+        <!-- 1. Intro -->
+        <div class="hero">
+          <div class="crumb"><a href="../">Oni School</a> / Oni Record</div>
+          <div class="name">
+            <svg class="sw" style="--c: var(--record)" aria-hidden="true"><use href="#oni-sw"></use></svg>
+            Oni Record · Oni생기부
+          </div>
+          <span class="pill">Desktop app for writing and checking student records</span>
+          <h1>Write and check student records, <em>in one table, with AI</em></h1>
+          <p class="lead">
+            Type as you would in Google Sheets, pick your material from keyword
+            chips, let AI write the draft, check it against the official
+            writing guidelines, then apply it to NEIS, Korea’s national school
+            information system.
+          </p>
+          <div class="meta">
+            <span class="tag beta">Beta</span><span>v0.1.1-beta.9</span
+            ><span aria-hidden="true">·</span><span>Windows, 64-bit</span
+            ><span aria-hidden="true">·</span><span>Korean interface</span>
+          </div>
+          <div class="cta">
+            <a class="btn primary" href="https://github.com/yang102948549/oni-record/releases">Download the beta</a
+            ><a class="btn" href="#start">Before you start</a>
+          </div>
+          <figure class="shot">
+            <img
+              src="../assets/record/hero.webp"
+              width="1250"
+              height="750"
+              alt="Oni Record window: a table of students with keyword columns for personality, peer relations and attitude, the finished record in the last column, and the Write sidebar on the right."
+            />
+            <figcaption>The app as it runs. Student names are pseudonyms.</figcaption>
+          </figure>
+          <ol class="steps4 left" aria-label="What Oni Record does">
+            <li><b><span class="n">1</span> Write</b><span>AI drafts for subject comments, behavior notes and activities</span></li>
+            <li><b><span class="n">2</span> Assist</b><span>Keyword chips supply the material for each sentence</span></li>
+            <li><b><span class="n">3</span> Check</b><span>Before and after, compared against the writing guidelines</span></li>
+            <li><b><span class="n">4</span> Apply</b><span>Batch entry into NEIS</span></li>
+          </ol>
+        </div>
 
-/* Table of contents */
-.toc{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
-.toc a{display:inline-flex;align-items:center;height:32px;padding:0 12px;border:1px solid var(--border);border-radius:999px;background:var(--surface);color:var(--text-2);font-size:14px;font-weight:500}
-.toc a:hover{text-decoration:none;background:var(--subtle);color:var(--text)}
+        <!-- 2. Before you start -->
+        <section id="start">
+          <div class="sec-head">
+            <div class="eyebrow r">Before you start</div>
+            <h2>AI features need a <em>Gemini API key</em></h2>
+          </div>
+          <div class="need">
+            <h3>For smooth writing and checking, a <em style="font-style: normal; color: var(--record)">paid-tier API key</em> is needed</h3>
+            <ul>
+              <li>Writing and checking call the AI once per student. Running a whole class sends the calls one after another.</li>
+              <li>On the free tier, request limits can make a batch stop or slow down partway through.</li>
+              <li>With a paid-tier key that has billing connected, a whole class can run without interruption.</li>
+            </ul>
+            <div class="two">
+              <div>
+                <h4>Without an API key</h4>
+                <p>Editing the table, entering Assist chips, and importing or exporting CSV and Excel all work. AI writing and checking do not.</p>
+              </div>
+              <div class="rec">
+                <h4>Paid-tier API key (recommended)</h4>
+                <p>Write and check a whole class at once. Usage is billed to the teacher’s own Google account.</p>
+              </div>
+            </div>
+          </div>
+          <p class="note">The key is issued in Google AI Studio and entered in the app’s settings. Pricing and limits follow Google’s policy and can change, so check them when you get the key.</p>
+        </section>
 
-/* Two-column feature rows */
-.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:36px;align-items:start}
-.row.flip > :first-child{order:2}
-.row + .row{margin-top:48px}
-.row.stack{grid-template-columns:minmax(0,1fr);gap:20px}
-.row.stack .copy ul{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 32px}
-.row.stack .copy p{max-width:70ch}
-.copy h3{font-size:20px;font-weight:900;letter-spacing:-.01em;line-height:1.35;margin-bottom:8px}
-.copy p{margin:0 0 12px;color:var(--text-2);max-width:54ch}
-.copy ul{margin:0;padding-left:18px;color:var(--text-2);display:grid;gap:6px;font-size:15px}
-.copy li::marker{color:var(--record)}
-.ko{font-weight:700;color:var(--text);white-space:nowrap}
-.step-no{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--record-soft);color:var(--record);font-weight:900;font-size:13px;margin-right:8px;vertical-align:2px}
+        <!-- 3. Flow -->
+        <section id="flow">
+          <div class="sec-head">
+            <div class="eyebrow r">Flow</div>
+            <h2>The basic <em>workflow</em></h2>
+            <p>One sheet carries the work from preparation to NEIS. No separate Excel conversion is needed.</p>
+          </div>
+          <ol class="steps4">
+            <li><span class="n">1</span><b>Prepare a sheet</b><span>Read the roster from NEIS, or bring in CSV, Excel or Google Sheets</span></li>
+            <li><span class="n">2</span><b>Write</b><span>Enter keyword chips, then generate an AI draft</span></li>
+            <li><span class="n">3</span><b>Check</b><span>Check against the guidelines, then apply fixes to the original</span></li>
+            <li class="on"><span class="n">4</span><b>Apply to NEIS</b><span>Batch entry, save, then confirm the match</span></li>
+          </ol>
+          <ul class="ticks">
+            <li>Type or paste straight into the table. Every long-text cell shows its NEIS byte count (a Korean character is 3 bytes, a line break 2).</li>
+            <li>Move between the <span class="ko">작성</span> (Write), <span class="ko">점검</span> (Check) and <span class="ko">도우미</span> (Assist) tabs in the right panel and stay on one screen.</li>
+            <li>Your work is saved on your own PC, and new versions arrive through the built-in updater.</li>
+          </ul>
+        </section>
 
-/* ── App mock-ups ─────────────────────────────────────────────── */
-.mk{background:var(--m-wall);border:1px solid var(--border);border-radius:var(--r12);color:var(--m-text);font-size:12.5px;line-height:1.5;min-width:0;overflow:hidden}
-.mk-scroll{overflow-x:auto}
-.mk figcaption,.cap{padding:9px 14px;color:var(--muted);font-size:12px;border-top:1px solid var(--border);background:var(--surface)}
-figure{margin:0}
-.pin{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--m-accent);color:#fff;font-size:11px;font-weight:900;flex:none;line-height:1}
+        <!-- 4. Screen -->
+        <section id="screen">
+          <div class="sec-head">
+            <div class="eyebrow r">Screen</div>
+            <h2>How the screen <em>is laid out</em></h2>
+          </div>
+          <figure class="shot">
+            <img
+              src="../assets/record/screen.webp"
+              width="1250"
+              height="755"
+              loading="lazy"
+              alt="Oni Record window with five numbered markers: sheet tabs, toolbar, editing table, the Write, Check and Assist panel, and the generate button."
+            />
+            <figcaption>A moral education subject-comment sheet for class 1-3, as it runs in the app.</figcaption>
+          </figure>
+          <ol class="legend">
+            <li><span class="num">1</span><div><b>Sheet tabs</b><span>One tab per class and subject</span></div></li>
+            <li><span class="num">2</span><div><b>Toolbar</b><span>Undo, row and column editing, find, import and export, text size and zoom</span></div></li>
+            <li><span class="num">3</span><div><b>Editing table</b><span>Arrow-key movement, copy and paste, byte count in each cell</span></div></li>
+            <li><span class="num">4</span><div><b>Write · Check · Assist</b><span>Choose <span class="ko">세특</span>, <span class="ko">행특</span>, <span class="ko">자율</span> or <span class="ko">기타</span> (club and career)</span></div></li>
+            <li><span class="num">5</span><div><b>Start generating</b><span>Select students and draft them in one run; the NEIS apply button sits just below</span></div></li>
+          </ol>
+        </section>
 
-/* Workspace */
-.ws{min-width:820px;padding:10px;display:grid;gap:8px}
-.ws-title{display:flex;align-items:center;gap:8px;font-weight:700;padding:2px 4px}
-.ws-title small{font-weight:500;color:var(--m-muted)}
-.ws-tabs{display:flex;align-items:center;gap:6px}
-.ws-tab{display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:8px;color:var(--m-muted);font-weight:500;white-space:nowrap}
-.ws-tab.on{background:var(--m-panel);color:var(--m-text);border:1px solid var(--m-line);font-weight:700}
-.bd{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:5px;font-size:10.5px;font-weight:900}
-.bd.c0{background:#dbe9f9;color:#2383e2}.bd.c1{background:#d9efef;color:#1a9d9d}.bd.c2{background:#fae7d5;color:#e58a32}.bd.c3{background:#fdeccf;color:#d48806}.bd.c4{background:#e6dff6;color:#7d5fd0}
-.ws-x{margin-left:auto;padding:5px 12px;border-radius:999px;background:var(--m-sel);color:var(--m-accent);font-weight:700}
-.ws-main{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:8px;align-items:start}
-.ws-stage{display:grid;gap:8px;min-width:0}
-.ws-bar{display:flex;align-items:center;gap:10px;padding:7px 10px;background:var(--m-panel);border:1px solid var(--m-line);border-radius:10px;color:var(--m-muted)}
-.ws-bar i{display:block;width:14px;height:14px;border:1.6px solid currentColor;border-radius:3px;opacity:.7}
-.ws-bar i.r{border-radius:50%}
-.ws-bar span{margin-left:auto;font-variant-numeric:tabular-nums}
-.gridbox{background:var(--m-panel);border:1px solid var(--m-line);border-radius:10px;overflow:hidden}
-.gridbox table{border-collapse:collapse;width:100%;table-layout:fixed}
-.gridbox th,.gridbox td{border:1px solid var(--m-grid);padding:7px 9px;text-align:left;vertical-align:top}
-.gridbox tr > :first-child{border-left:0}.gridbox tr > :last-child{border-right:0}
-.gridbox thead th{border-top:0;background:var(--m-head);font-weight:500;color:var(--m-muted);font-size:12px}
-.gridbox tbody tr:last-child td{border-bottom:0}
-.gridbox td.n{color:var(--m-muted);text-align:center}
-.gridbox td.nm{font-weight:700}
-.gridbox td.sel{outline:2px solid var(--m-accent);outline-offset:-2px;background:var(--m-sel)}
-.gridbox td.long{color:var(--m-text);line-height:1.6}
-.meter{display:block;margin-top:4px;color:var(--m-muted);font-size:11px;font-variant-numeric:tabular-nums}
-.side{background:var(--m-panel);border:1px solid var(--m-line);border-radius:10px;padding:10px;display:grid;gap:10px}
-.modes{display:flex;padding:3px;border-radius:10px;background:var(--m-hover)}
-.modes b{flex:1;text-align:center;padding:6px 0;border-radius:8px;color:var(--m-muted);font-weight:700}
-.modes b.on{background:var(--m-accent);color:#fff}
-.card{border:1px solid var(--m-line);border-radius:10px;padding:10px;display:grid;gap:8px}
-.card h4{margin:0;font-size:12.5px;font-weight:700}
-.types{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
-.types b{border:1px solid var(--m-grid);border-radius:7px;padding:6px 0;text-align:center;font-size:11.5px;color:var(--m-muted);font-weight:700;line-height:1.2}
-.types b small{display:block;font-size:9.5px;font-weight:500}
-.types b.on{border-color:var(--m-accent);color:var(--m-accent);background:var(--m-sel)}
-.field{border:1px solid var(--m-line);border-radius:7px;padding:6px 8px;color:var(--m-muted);background:var(--m-wall)}
-.go{border-radius:7px;padding:8px;text-align:center;background:var(--m-accent);color:#fff;font-weight:700}
-.rel{position:relative}
-.rel > .pin{position:absolute;top:-8px;left:-8px;z-index:1;box-shadow:0 0 0 2px var(--m-wall)}
+        <!-- 5. Write by record type -->
+        <section id="write">
+          <div class="sec-head">
+            <div class="eyebrow r">Write</div>
+            <h2>Writing, <em>by record type</em></h2>
+            <p>Choose what you are writing, and the input panel and the AI’s writing rules change to fit that type.</p>
+          </div>
 
-/* Chips (assist panel) */
-.pills{display:flex;flex-wrap:wrap;gap:5px}
-.pill{padding:4px 9px;border-radius:999px;border:1px solid var(--m-line);color:var(--m-muted);font-weight:700;font-size:11.5px;white-space:nowrap}
-.pill.on{border-color:var(--m-accent);color:var(--m-accent);background:var(--m-sel)}
-.srow{display:flex;gap:6px}
-.srow .field{flex:1}
-.srow .field::before{content:"";display:inline-block;width:9px;height:9px;border:1.6px solid currentColor;border-radius:50%;margin-right:6px;vertical-align:-1px}
-.srow em{font-style:normal;border:1px solid var(--m-line);border-radius:7px;padding:6px 9px;color:var(--m-muted);font-weight:700;font-size:11.5px;white-space:nowrap}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip2{display:inline-flex;border:1px solid var(--m-line);border-radius:7px;background:var(--m-wall);overflow:hidden;white-space:nowrap}
-.chip2 > span{padding:4px 8px}
-.chip2 > i{font-style:normal;padding:4px 6px;border-left:1px solid var(--m-line);color:var(--m-muted);font-size:10px}
-.chip2.on{border-color:var(--m-accent);background:var(--m-sel);color:var(--m-accent);font-weight:700}
-.chip2.on > i,.chip2.open > i{border-color:var(--m-accent);color:var(--m-accent)}
-.chip2.open{border-color:var(--m-accent)}
-.kids{flex:0 0 100%;margin:0 0 2px 10px;padding:2px 0 2px 10px;border-left:2px solid var(--m-accent)}
-.assist{padding:12px;display:grid;gap:10px;max-width:340px;margin-inline:auto}
-.assist .card{background:var(--m-panel)}
-.hint{color:var(--m-muted);font-size:11.5px;margin:0}
+          <article class="guide">
+            <header><h3>세특 · Subject comments</h3><span>교과 세부능력 및 특기사항</span></header>
+            <div class="guide-body">
+              <figure class="shot panel">
+                <img src="../assets/record/write-course.webp" width="352" height="1060" loading="lazy" alt="Write panel for subject comments: four lesson activities, a character count of 150, a student list and the generate button." />
+              </figure>
+              <div>
+                <ol class="guide-steps">
+                  <li><span class="num">1</span><div><b>Add lesson activities</b><span>Each activity name you enter becomes a column in the table.</span></div></li>
+                  <li><span class="num">2</span><div><b>Enter notes for each student</b><span>The draft is based only on what the student actually did.</span></div></li>
+                  <li><span class="num">3</span><div><b>Set the length, select students, start</b><span>The draft is written to the character count you set, spaces included.</span></div></li>
+                </ol>
+                <p class="rule"><b>AI writing rules.</b> The subject teacher’s point of view, in one connected paragraph. Wording that implies one lesson continued from another is avoided, and an activity left empty is never invented.</p>
+              </div>
+            </div>
+          </article>
 
-/* Check sheet */
-.chk{min-width:600px}
-.chk table{border-collapse:collapse;width:100%}
-.chk th,.chk td{border-bottom:1px solid var(--m-grid);border-right:1px solid var(--m-grid);padding:9px 11px;text-align:left;vertical-align:top;background:var(--m-panel)}
-.chk tr > :last-child{border-right:0}
-.chk tbody tr:last-child td{border-bottom:0}
-.chk th{background:var(--m-head);font-weight:500;color:var(--m-muted);font-size:12px}
-.chk td.nm{font-weight:700;white-space:nowrap}
-.chk del{background:var(--m-del);text-decoration:none;border-radius:2px;padding:0 1px}
-.chk ins{background:var(--m-add);text-decoration:none;border-radius:2px;padding:0 1px}
-.chk .dim{color:var(--m-muted)}
-.st{display:inline-block;padding:1px 7px;border-radius:3px;font-size:11px;font-weight:700;white-space:nowrap}
-.st.fix{background:var(--info-soft);color:var(--info)}
-.st.same{background:var(--subtle);color:var(--muted)}
-.st.warn{background:var(--warn-soft);color:var(--warn)}
+          <article class="guide">
+            <header><h3>행특 · Behavior notes</h3><span>행동특성 및 종합의견</span></header>
+            <div class="guide-body">
+              <figure class="shot panel">
+                <img src="../assets/record/write-behavior.webp" width="352" height="1066" loading="lazy" alt="Write panel for behavior notes: evaluation items for personality, peer relations and attitude, a character count of 200, and seven students selected." />
+              </figure>
+              <div>
+                <ol class="guide-steps">
+                  <li><span class="num">1</span><div><b>Set the evaluation items</b><span>For example personality, peer relations and attitude to school life.</span></div></li>
+                  <li><span class="num">2</span><div><b>Enter keywords for each item</b><span>Pick them from Assist chips or type them yourself.</span></div></li>
+                  <li><span class="num">3</span><div><b>Set the length, select students, start</b><span>The keywords you entered are worked into the sentences.</span></div></li>
+                </ol>
+                <p class="rule"><b>AI writing rules.</b> The homeroom teacher’s point of view, centered on the student’s current positive change. A weakness is written together with the effort to improve, and the note closes with one sentence on the student’s potential.</p>
+              </div>
+            </div>
+          </article>
 
-/* NEIS flow */
-.flow{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:stretch}
-.node{background:var(--surface);border:1px solid var(--border);border-radius:var(--r12);padding:18px;display:grid;gap:6px;align-content:start}
-.node b{font-size:15px}
-.node span{color:var(--text-2);font-size:14px}
-.arrow{align-self:center;color:var(--muted);font-size:20px;font-weight:700}
+          <article class="guide">
+            <header><h3>자율활동 · Autonomous activities</h3><span>자율활동 특기사항</span></header>
+            <div class="guide-body text">
+              <div>
+                <ol class="guide-steps">
+                  <li><span class="num">1</span><div><b>Save each activity’s date and name</b><span>Saved activities appear as a pick list in the table’s activity cells.</span></div></li>
+                  <li><span class="num">2</span><div><b>Set the number of activity slots and enter each student’s notes</b><span>Add as many slots as you need.</span></div></li>
+                  <li><span class="num">3</span><div><b>Set the length, select students, start</b><span>The paragraph is written with the date in <code>(YYYY.MM.DD.)</code> form after each activity name.</span></div></li>
+                </ol>
+                <p class="rule"><b>AI writing rules.</b> One paragraph that connects what the activity meant with how the student grew. Activity names are written without quotation marks, and the opening phrases are varied from student to student.</p>
+              </div>
+            </div>
+          </article>
+          <p class="note">Club and career activity sheets have their own writing and checking rules, under <span class="ko">기타</span>. They cannot be applied to NEIS yet, so the generated text is copied by hand.</p>
+        </section>
 
-/* Reference table */
-.ref{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r12);overflow:hidden;border-spacing:0}
-.ref-wrap{border:1px solid var(--border);border-radius:var(--r12);overflow:hidden;background:var(--surface)}
-.ref-wrap table{width:100%;border-collapse:collapse;font-size:15px}
-.ref-wrap th,.ref-wrap td{padding:12px 16px;text-align:left;vertical-align:top;border-top:1px solid var(--border)}
-.ref-wrap tr:first-child th,.ref-wrap tr:first-child td{border-top:0}
-.ref-wrap th{width:32%;font-weight:700;color:var(--text)}
-.ref-wrap td{color:var(--text-2)}
-kbd{font-family:var(--mono);font-size:.85em;border:1px solid var(--border);border-bottom-width:2px;border-radius:4px;padding:0 5px;background:var(--subtle);color:var(--text);white-space:nowrap}
+        <!-- 6. Assist -->
+        <section id="assist" class="band">
+          <div class="sec-head">
+            <div class="eyebrow r">Assist</div>
+            <h2>Record assistant: <em>just press the chips</em></h2>
+            <p>There is no need to start each sentence from a blank cell. Press keyword chips organized by subject and item to put them in the cell, and the AI writes from those keywords.</p>
+          </div>
+          <figure class="shot">
+            <img src="../assets/record/assist.webp" width="1250" height="750" loading="lazy" alt="A behavior-note sheet with the Assist panel open. The selected cell holds two keywords, and the same two chips are highlighted in the panel." />
+            <figcaption>Select an empty cell and press chips. They are entered in the cell joined by commas, as in “활발한, 적극적인”.</figcaption>
+          </figure>
+          <div class="cards2">
+            <div><h3><i>1</i>The chips change with the area</h3><p>Subject comments are grouped by subject. Behavior notes are grouped by personality, peer relations, class attitude, school life and self-management.</p></div>
+            <div><h3><i>2</i>Open a chip to go deeper</h3><p>Opening a group such as “active and sociable” shows more specific keywords like “lively” and “outgoing”. Either level can be chosen.</p></div>
+            <div><h3><i>3</i>Straight into the cell</h3><p>Chosen keywords are listed under “keywords in this cell”. Remove one with ×, or edit the cell by hand. The same keyword is entered only once.</p></div>
+            <div><h3><i>4</i>Search, collapse, cautions</h3><p>Keyword search, collapse all, and a list of writing cautions for each area come with the panel.</p></div>
+          </div>
+          <ul class="groups" aria-label="Subject groups">
+            <li>Korean</li><li>Mathematics</li><li>English, foreign languages, classical Chinese</li><li>Social studies, history, ethics</li><li>Science</li><li>Physical education</li><li>Arts</li><li>Technology, home economics, informatics</li><li>Career and liberal arts</li><li>Other and common</li>
+          </ul>
+          <p class="sub">Assist for subject comments is divided into these ten subject groups. Behavior notes, autonomous activities, clubs and career each have their own chips. <b>The keywords you choose are what the AI uses to interpret and write each sentence.</b> The keyword lists are a first draft and have not yet been reviewed in schools.</p>
+        </section>
 
-.legend{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 28px}
-.legend li{display:grid;grid-template-columns:20px minmax(0,1fr);gap:10px;font-size:15px;color:var(--text-2)}
-.legend li .pin{margin-top:3px}
-.legend b{color:var(--text)}
+        <!-- 7. Check -->
+        <section id="check" style="border-top: 0; padding-top: 0">
+          <div class="sec-head">
+            <div class="eyebrow r">Check</div>
+            <h2>AI <em>checks</em> against the writing guidelines</h2>
+            <p>The original is left as it is. A separate check sheet shows what changed and why, at a glance.</p>
+          </div>
+          <ol class="steps4 three">
+            <li><span class="n">1</span><b>Make a check sheet</b><span>Columns for original, before, after and reason are created</span></li>
+            <li><span class="n">2</span><b>Select students and check</b><span>Each student is marked fixed or unchanged</span></li>
+            <li class="on"><span class="n">3</span><b>Apply to the original</b><span>Only fixed items are written back to the original cell</span></li>
+          </ol>
+          <figure class="shot" style="margin-top: 24px">
+            <img src="../assets/record/check.webp" width="1250" height="750" loading="lazy" alt="A check sheet with original, before, after and reason columns for each student, and the Check panel listing each student's status." />
+            <figcaption>A check result. Changed parts are marked <span class="hl-del">red</span> before and <span class="hl-add">green</span> after, and the reason is recorded beside them.</figcaption>
+          </figure>
+          <div class="split">
+            <figure class="shot">
+              <img src="../assets/record/check-done.webp" width="448" height="242" loading="lazy" alt="Dialog: check complete. 8 students checked, 4 fixed, 4 unchanged." />
+              <figcaption>When checking ends, the app reports how many were fixed and how many were unchanged.</figcaption>
+            </figure>
+            <ul class="ticks">
+              <li>Review the reason for each student and choose what to apply to the original.</li>
+              <li>If nothing needs fixing, the original is kept and marked <span class="ko">수정사항 없음</span> (no changes).</li>
+              <li>A result that was shortened too much keeps the original and raises a warning.</li>
+              <li>Write your own criteria under “additional check items” and they are checked as well.</li>
+            </ul>
+          </div>
+          <h3 class="sub">What is checked, following the 2026 writing guidelines</h3>
+          <ul class="criteria">
+            <li><b>Sentence endings</b>Noun-form endings, with varied endings</li>
+            <li><b>Particles and subject</b>No “~에서는”, required particles in place</li>
+            <li><b>Quotation marks</b>Single quotes only for book and project titles</li>
+            <li><b>Dates</b>One format: (YYYY.MM.DD.)</li>
+            <li><b>Symbols and layout</b>Decorative symbols, bullet lists and double spaces cleaned up</li>
+            <li><b>Not to be recorded</b>University and institution names, overseas results, competition content</li>
+            <li><b>Vocabulary</b>Colloquial and abbreviated words made standard</li>
+            <li><b>Content kept</b>The student’s own content is neither deleted nor invented</li>
+          </ul>
+          <p class="note">The teacher makes the final decision on anything the AI checks. Read the reasons before applying.</p>
+        </section>
 
-@media (max-width:760px){
-  .row,.legend,.row.stack .copy ul{grid-template-columns:minmax(0,1fr)}
-  .row.flip > :first-child{order:0}
-  .flow{grid-template-columns:minmax(0,1fr)}
-  .arrow{justify-self:center;transform:rotate(90deg)}
-  .ref-wrap th{width:38%}
-  .hero{padding-block:40px 36px}
-}
-</style>
-</head>
-<body>
+        <!-- 8. NEIS -->
+        <section id="neis">
+          <div class="sec-head">
+            <div class="eyebrow r">NEIS</div>
+            <h2>Apply to NEIS <em>in one go</em></h2>
+            <p>No copying and pasting student by student. The app matches its text to NEIS by class, number and name and enters it in a batch.</p>
+          </div>
+          <ol class="steps4">
+            <li><span class="n">1</span><b>Connect</b><span>Link the Chrome extension to the open NEIS tab</span></li>
+            <li><span class="n">2</span><b>Set the target</b><span>School year, grade and class, and the type of record</span></li>
+            <li><span class="n">3</span><b>Match and enter</b><span>Class, number and name, entered in one batch</span></li>
+            <li class="on"><span class="n">4</span><b>Save and confirm</b><span>After saving, the result is compared with the app’s text</span></li>
+          </ol>
+          <ul class="ticks">
+            <li>Subject comments, autonomous activities and behavior notes are supported. Club and career records are not yet.</li>
+            <li>An existing record that differs from the selected text is replaced. An empty text is not entered.</li>
+            <li>The student roster can also be read from NEIS into a new sheet.</li>
+          </ul>
+          <p class="note">If NEIS screens change, some steps may behave differently. Always check the result before and after applying. The extension currently supports <code>cbe.neis.go.kr</code>, with more regions to follow after verification.</p>
+        </section>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <symbol id="oni-sw" viewBox="0 0 256 256"><rect x="16" y="64" width="224" height="128" rx="64" style="fill:var(--c)"/><circle cx="176" cy="128" r="50" style="fill:var(--knob)"/></symbol>
-  </defs>
-</svg>
+        <!-- 9. Checklist -->
+        <section id="checklist">
+          <div class="sec-head">
+            <div class="eyebrow r">Checklist</div>
+            <h2>Check these <em>before you use it</em></h2>
+          </div>
+          <ul class="ticks plain" style="margin-top: 0">
+            <li>It is an installed Windows program, with automatic updates.</li>
+            <li>AI writing and checking need your own Google Gemini API key. A paid-tier key is recommended for smooth use.</li>
+            <li>Applying to NEIS needs the Chrome extension installed and connected.</li>
+            <li>Text written by AI must be reviewed and edited by the teacher before it is used.</li>
+            <li>CSV, Excel and Google Sheets content can be imported, and check results can be exported to Excel.</li>
+          </ul>
+          <p class="note">What you enter for AI writing and checking is sent to Google’s servers. Handle personal information such as students’ real names carefully, following your school’s guidance.</p>
+        </section>
 
-<div class="wrap">
-  <header class="top">
-    <a class="brand" href="../" aria-label="Oni School home">
-      <svg class="sw" width="26" height="26" style="--c:var(--text)" viewBox="0 0 256 256" aria-hidden="true"><rect x="16" y="64" width="224" height="128" rx="64"/><circle cx="176" cy="128" r="50" style="fill:var(--bg)"/></svg>
-      Oni School
-    </a>
-    <nav aria-label="Sections">
-      <a href="#workspace">Workspace</a>
-      <a href="#flow">Workflow</a>
-      <a href="#grid">The grid</a>
-      <a href="#data">Data</a>
-    </nav>
-  </header>
+        <!-- 10. Data -->
+        <section id="data">
+          <div class="sec-head">
+            <div class="eyebrow r">Data · reviewed 2026-10-09</div>
+            <h2>What stays on the PC and <em>what leaves it</em></h2>
+            <p>Student records are sensitive, so the app is explicit about where they go.</p>
+          </div>
+          <div class="facts">
+            <div class="fact"><h3>Stored locally</h3><p>Writing sheets, student cell contents, generated text, preferences and prompt templates are saved in store.json in the Windows user profile. The separate check window uses store-check.json. The reviewed app source does not sync these sheets to an Oni account cloud. These work files are not encrypted by the app.</p></div>
+            <div class="fact"><h3>The teacher’s own AI key</h3><p>Drafting and checking use Google Gemini with the teacher’s own API key. The desktop app encrypts the saved key with Electron safeStorage (Windows DPAPI) when available. The current implementation falls back to plaintext key storage when OS encryption is unavailable. Requests go directly from the desktop app to Google’s API.</p></div>
+            <div class="fact"><h3>What is sent to the AI</h3><p>Generation and checking send task prompts and the selected work content to Google Gemini. Local file storage does not mean that AI processing stays offline. Review the content before requesting an AI operation.</p></div>
+            <div class="fact"><h3>NEIS only on request</h3><p>Nothing is entered in NEIS until the teacher opens the apply dialog and confirms. The extension works only on the NEIS tab already open in the browser.</p></div>
+          </div>
+        </section>
 
-  <main>
-    <div class="hero">
-      <div class="crumb"><a href="../">Oni School</a> / Oni Record</div>
-      <div class="name">
-        <svg class="sw" style="--c:var(--record)" aria-hidden="true"><use href="#oni-sw"/></svg>
-        Oni Record · Oni생기부
-      </div>
-      <h1>Student records, written and checked in one table</h1>
-      <p class="lead">Korean teachers write a short, rule-bound comment for every student in every subject, then check each one against the official writing guidelines before entering it in NEIS, the national school information system. Oni Record keeps that whole job in a single spreadsheet-like window on the teacher's own PC.</p>
-      <div class="meta">
-        <span class="tag beta">Beta</span>
-        <span>v0.1.1-beta.9</span><span class="dot">·</span>
-        <span>Windows, 64-bit</span><span class="dot">·</span>
-        <span>Korean interface</span>
-      </div>
-      <div class="cta">
-        <a class="btn primary" href="https://github.com/yang102948549/oni-record/releases" target="_blank" rel="noopener">Download the beta</a>
-        <a class="btn" href="../#apps">All Oni apps</a>
-      </div>
-      <ul class="toc" aria-label="On this page">
-        <li><a href="#workspace">Workspace</a></li>
-        <li><a href="#write">Write</a></li>
-        <li><a href="#assist">Assist</a></li>
-        <li><a href="#check">Check</a></li>
-        <li><a href="#apply">Apply to NEIS</a></li>
-        <li><a href="#grid">The grid</a></li>
-        <li><a href="#data">Data</a></li>
-      </ul>
+        <!-- 11. Closing -->
+        <section id="download" style="border-top: 0; padding-top: 0">
+          <div class="close">
+            <h2>This term, spend less time<br />on student records</h2>
+            <p>Oni Record · Windows desktop app · Beta v0.1.1-beta.9</p>
+            <div class="cta" style="justify-content: center">
+              <a class="btn" href="https://github.com/yang102948549/oni-record/releases">Download the beta</a
+              ><a class="btn ghost" href="mailto:oniaby@onischool.net">Ask a question</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <span>© 2026 Oni School · Oniaby</span>
+        <span><a href="../">Oni School</a> · <a href="../oni-class/">Oni Class</a> · Oni Record</span>
+      </footer>
     </div>
-
-    <section id="workspace">
-      <div class="sec-head">
-        <div class="eyebrow">Workspace</div>
-        <h2>One window, three areas</h2>
-        <p>The layout follows a spreadsheet, because that is where most teachers already draft their records. Sheets run along the top, students run down the grid, and the sidebar changes with the task.</p>
-      </div>
-      <figure class="mk">
-        <div class="mk-scroll">
-          <div class="ws">
-            <div class="ws-title">1-2 · Oni생기부 <small>저장됨</small></div>
-            <div class="ws-tabs rel">
-              <span class="pin">1</span>
-              <span class="ws-tab on"><span class="bd c0">세</span>1-2 사회 세특</span>
-              <span class="ws-tab"><span class="bd c1">행</span>1-2 행특</span>
-              <span class="ws-tab"><span class="bd c2">자</span>1-2 자율</span>
-              <span class="ws-tab"><span class="bd c4">동</span>1-2 동아리</span>
-              <span class="ws-tab"><span class="bd c3">점</span>[점검] 1-2 사회</span>
-              <span class="ws-x">교차점검</span>
-            </div>
-            <div class="ws-main">
-              <div class="ws-stage">
-                <div class="ws-bar rel"><span class="pin">2</span><i class="r"></i><i class="r"></i><i></i><i></i><i></i><i></i><i class="r"></i><i></i><span>가− 15px 가+ &nbsp; − 100% +</span></div>
-                <div class="gridbox rel">
-                  <span class="pin">3</span>
-                  <table>
-                    <colgroup><col style="width:44px"><col style="width:68px"><col style="width:150px"><col></colgroup>
-                    <thead><tr><th>번호</th><th>이름</th><th>토론 활동</th><th>세부능력 및 특기사항</th></tr></thead>
-                    <tbody>
-                      <tr><td class="n">1</td><td class="nm">김하늘</td><td class="sel">근거 자료 조사, 반대 의견을 존중하는</td><td class="long">토론 수업에서 근거 자료를 찾아 정리하고, 반대 의견을 존중하며 자신의 주장을 보완함.<span class="meter">352 B</span></td></tr>
-                      <tr><td class="n">2</td><td class="nm">이도윤</td><td>사회자 역할, 의견을 조율하는</td><td class="long">토론 수업에서 사회자 역할을 맡아 발언 순서를 정리하고 서로 다른 의견을 조율함.<span class="meter">338 B</span></td></tr>
-                      <tr><td class="n">3</td><td class="nm">박서연</td><td>질문 목록 작성</td><td class="long"></td></tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="side rel">
-                <span class="pin">4</span>
-                <div class="modes"><b class="on">작성</b><b>점검</b><b>도우미</b></div>
-                <div class="card rel">
-                  <span class="pin">5</span>
-                  <h4>생기부 항목</h4>
-                  <div class="types"><b class="on">세특</b><b>행특</b><b>자율</b><b>기타<small>동아리·진로</small></b></div>
-                </div>
-                <div class="card"><h4>수업 활동</h4><div class="field">토론 활동</div></div>
-                <div class="card"><h4>글자수 입력</h4><div class="field">300</div></div>
-                <div class="go">선택 학생 생성 시작</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <figcaption>Illustration of the Oni Record window. Student names and records are fictional.</figcaption>
-      </figure>
-      <ol class="legend">
-        <li><span class="pin">1</span><span><b>Sheet tabs.</b> One sheet per class and record type. The colored badge shows the type at a glance; tabs can be dragged to reorder.</span></li>
-        <li><span class="pin">2</span><span><b>Toolbar.</b> Undo, rows and columns, find and replace, import, CSV export, and separate controls for grid text size and whole-window zoom.</span></li>
-        <li><span class="pin">3</span><span><b>Grid.</b> Students in rows. The teacher's notes sit in the middle columns and the finished record lands in the last one, with its NEIS byte count underneath.</span></li>
-        <li><span class="pin">4</span><span><b>Sidebar.</b> Three modes: <span class="ko">작성</span> (Write), <span class="ko">점검</span> (Check) and <span class="ko">도우미</span> (Assist). It can be hidden to give the grid the full width.</span></li>
-        <li><span class="pin">5</span><span><b>Record type.</b> <span class="ko">세특</span> subject comments, <span class="ko">행특</span> behavior notes, <span class="ko">자율</span> autonomous activities, and <span class="ko">기타</span> for club and career activities. Switching type keeps the table and changes only the sidebar and prompt.</span></li>
-      </ol>
-    </section>
-
-    <section id="flow">
-      <div class="sec-head">
-        <div class="eyebrow">Workflow</div>
-        <h2>From a blank sheet to NEIS in four steps</h2>
-        <p>Each step is a sidebar mode or a single dialog. Nothing is hidden behind a wizard, and every step can be redone for one student without touching the rest.</p>
-      </div>
-
-      <div class="row" id="write">
-        <div class="copy">
-          <h3><span class="step-no">1</span>Write</h3>
-          <p>A sheet starts blank, from an Excel, CSV or Google Sheets file, or from records already in NEIS. The columns between the name and the record are the teacher's notes for each lesson or trait.</p>
-          <ul>
-            <li>Notes columns and the sidebar list stay in sync. Add, rename or remove an item in either place.</li>
-            <li>Set a target length, tick the students, and generate. AI drafts only for students who have notes.</li>
-            <li>The prompt is editable and saved per record type. Length and activity names are filled in automatically and cannot be deleted by mistake.</li>
-            <li><span class="ko">매칭</span> (Match) pulls notes from a file in a different layout, matching by grade, class, number and name with a preview before anything is applied.</li>
-          </ul>
-        </div>
-        <figure class="mk">
-          <div class="assist">
-            <div class="modes"><b class="on">작성</b><b>점검</b><b>도우미</b></div>
-            <div class="card"><h4>수업 활동</h4><div class="field">토론 활동</div><div class="field">모둠 프로젝트</div><p class="hint">+ 수업 활동 추가</p></div>
-            <div class="card"><h4>학생 선택</h4>
-              <div class="pills"><span class="pill on">1 김하늘</span><span class="pill on">2 이도윤</span><span class="pill">3 박서연</span></div>
-            </div>
-            <div class="go">선택 학생 생성 시작</div>
-          </div>
-          <figcaption>Write mode. The activity list on the right is the same list as the note columns in the grid.</figcaption>
-        </figure>
-      </div>
-
-      <div class="row flip" id="assist">
-        <div class="copy">
-          <h3><span class="step-no">2</span>Assist</h3>
-          <p>Finding the right word for each student is the slow part. Assist mode offers keyword chips for the selected cell, so the teacher picks observations instead of typing them.</p>
-          <ul>
-            <li>Click a chip and that keyword goes into the active cell. Click again and it comes out. A keyword is never entered twice.</li>
-            <li>The small arrow opens more specific keywords directly under the chip. Both levels can be chosen on their own.</li>
-            <li>Keyword sets follow the record type: five areas for behavior notes, ten subject groups for subject comments, and separate sets for autonomous, club and career activities.</li>
-            <li>Search filters every level at once. <span class="ko">모두 접기</span> closes all open branches.</li>
-          </ul>
-        </div>
-        <figure class="mk">
-          <div class="assist">
-            <div class="modes"><b>작성</b><b>점검</b><b class="on">도우미</b></div>
-            <div class="card">
-              <div class="pills"><span class="pill">국어</span><span class="pill">수학</span><span class="pill">영어·외국어·한문</span><span class="pill on">사회·역사·도덕</span><span class="pill">과학</span><span class="pill">체육</span><span class="pill">예술</span></div>
-            </div>
-            <div class="card">
-              <div class="srow"><div class="field">키워드 검색</div><em>모두 접기</em></div>
-              <div class="chips">
-                <span class="chip2 open"><span>토론·표현·소통</span><i>▾</i></span>
-                <div class="kids"><div class="chips">
-                  <span class="chip2 on"><span>✓ 논리적으로 주장하는</span><i>▸</i></span>
-                  <span class="chip2"><span>조사 결과를 발표하는</span><i>▸</i></span>
-                </div></div>
-                <span class="chip2"><span>자료 분석·해석</span><i>▸</i></span>
-                <span class="chip2"><span>비판적 사고·판단</span><i>▸</i></span>
-                <span class="chip2"><span>탐구·조사</span><i>▸</i></span>
-              </div>
-            </div>
-            <div class="card"><h4>이 셀의 키워드 1개</h4><div class="chips"><span class="chip2 on"><span>논리적으로 주장하는</span><i>×</i></span></div></div>
-          </div>
-          <figcaption>Assist mode for a social studies sheet. The chosen keyword is listed below and can be removed there.</figcaption>
-        </figure>
-      </div>
-
-      <div class="row stack" id="check">
-        <div class="copy">
-          <h3><span class="step-no">3</span>Check</h3>
-          <p>Checking happens on a copy. Oni Record makes a separate check sheet, so the original text is never overwritten until the teacher decides.</p>
-          <ul>
-            <li>Before and after sit side by side, with the changed words highlighted and the reason given in plain language.</li>
-            <li>Each student is marked fixed, unchanged or needs review. If the AI shortens a record too much, the original is kept and flagged instead.</li>
-            <li>Accepted corrections are applied back to the original sheet in one action.</li>
-            <li><span class="ko">교차점검</span> (Cross-check) opens a second window for checking records exported from elsewhere, such as a colleague's Excel file.</li>
-          </ul>
-        </div>
-        <figure class="mk">
-          <div class="mk-scroll">
-            <div class="chk">
-              <table>
-                <thead><tr><th>이름</th><th>수정 전</th><th>수정 후</th><th>수정 사유</th></tr></thead>
-                <tbody>
-                  <tr><td class="nm">김하늘</td><td>토론 <del>수업에서는</del> 근거 자료를 찾아 정리함.</td><td>토론 <ins>수업에서</ins> 근거 자료를 찾아 정리함.</td><td><span class="st fix">수정됨</span><br>'~에서는' → '~에서'</td></tr>
-                  <tr><td class="nm">이도윤</td><td>사회자 역할을 맡아 의견을 조율함.</td><td>사회자 역할을 맡아 의견을 조율함.</td><td><span class="st same">이상 없음</span><br><span class="dim">수정사항 없음</span></td></tr>
-                  <tr><td class="nm">박서연</td><td>질문 목록을 만들어 친구들과 나누며 탐구를 확장함.</td><td>질문 목록을 만들어 친구들과 나누며 탐구를 확장함.</td><td><span class="st warn">확인 필요</span><br>과도한 축약 감지, 원문 유지</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <figcaption>Illustration of a check sheet. Unchanged records are shown in gray so the eye goes to what needs attention.</figcaption>
-        </figure>
-      </div>
-
-      <div class="row" id="apply" style="display:block">
-        <div class="copy" style="margin-bottom:22px">
-          <h3><span class="step-no">4</span>Apply to NEIS</h3>
-          <p>Approved text goes into the NEIS grid through the Oni browser extension. The app matches each record to a student by class, number and name, fills the grid, saves once, then reads the saved result back to confirm it matches.</p>
-        </div>
-        <div class="flow">
-          <div class="node"><b>Oni Record</b><span>The teacher picks the sheet, year, grade and class to send.</span></div>
-          <div class="arrow" aria-hidden="true">→</div>
-          <div class="node"><b>Oni browser extension</b><span>Runs in Chrome or Edge on the NEIS tab the teacher has open and is signed in to.</span></div>
-          <div class="arrow" aria-hidden="true">→</div>
-          <div class="node"><b>NEIS</b><span>Records are entered and saved by NEIS itself, then read back and compared.</span></div>
-        </div>
-        <ul class="copy" style="margin:18px 0 0;padding-left:18px;color:var(--text-2);display:grid;gap:6px;font-size:15px;max-width:70ch">
-          <li>Subject comments, autonomous activities and behavior notes can be applied. Club and career sheets are written and checked in the app but not yet applied to NEIS.</li>
-          <li>The same connection can read existing records from NEIS into a new sheet. Reading never enters or saves anything in NEIS.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="grid">
-      <div class="sec-head">
-        <div class="eyebrow">The grid</div>
-        <h2>It behaves like the spreadsheet teachers already know</h2>
-        <p>No new habits to learn. The shortcuts, selection and clipboard match what a teacher expects from Google Sheets or Excel.</p>
-      </div>
-      <div class="ref-wrap">
-        <table>
-          <tr><th>Typing</th><td>Start typing on any cell, including Korean input. <kbd>Enter</kbd> or <kbd>F2</kbd> edits, <kbd>Enter</kbd> confirms and moves down, <kbd>Tab</kbd> moves right, <kbd>Esc</kbd> cancels, <kbd>Alt</kbd>+<kbd>Enter</kbd> adds a line break.</td></tr>
-          <tr><th>Copy and paste</th><td><kbd>Ctrl</kbd>+<kbd>C</kbd>, <kbd>X</kbd>, <kbd>V</kbd> work across ranges and exchange cleanly with Google Sheets and Excel.</td></tr>
-          <tr><th>Undo and find</th><td><kbd>Ctrl</kbd>+<kbd>Z</kbd> and <kbd>Ctrl</kbd>+<kbd>Y</kbd> for every edit, including AI drafts and keyword chips. <kbd>Ctrl</kbd>+<kbd>F</kbd> finds and <kbd>Ctrl</kbd>+<kbd>H</kbd> replaces.</td></tr>
-          <tr><th>Byte counter</th><td>NEIS limits records by bytes, not characters, and a Korean character counts as three. Long-text cells show their byte count so a record is never rejected at the last step.</td></tr>
-          <tr><th>Columns and rows</th><td>Text, long text, number and tag columns. Drag to resize columns and rows; a column never shrinks below its header.</td></tr>
-          <tr><th>Import and export</th><td>Excel, CSV and Google Sheets in, including files with several tabs. CSV out, encoded so Excel opens Korean text correctly.</td></tr>
-          <tr><th>Reading comfort</th><td>Grid text size and window zoom are adjusted separately. Light and dark themes follow the system or can be set by hand.</td></tr>
-        </table>
-      </div>
-    </section>
-
-    <section id="data">
-      <div class="sec-head">
-        <div class="eyebrow">Data · reviewed 2026-10-09</div>
-        <h2>What stays on the PC and what leaves it</h2>
-        <p>Student records are sensitive, so the app is explicit about where they go. <a href="../#data">Compare storage and transfer across Oni apps</a>.</p>
-      </div>
-      <div class="facts">
-        <div class="fact"><h3>Stored locally</h3><p>Writing sheets, student cell contents, generated text, preferences and prompt templates are saved in store.json in the Windows user profile. The separate check window uses store-check.json. The reviewed app source does not sync these sheets to an Oni account cloud. These work files are not encrypted by the app.</p></div>
-        <div class="fact"><h3>The teacher's own AI key</h3><p>Drafting and checking use Google Gemini with the teacher's own API key. The desktop app encrypts the saved key with Electron safeStorage (Windows DPAPI) when available. The current implementation falls back to plaintext key storage when OS encryption is unavailable. Work sheets are not encrypted by this mechanism. Requests go directly from the desktop app to Google's API.</p></div>
-        <div class="fact"><h3>What is sent to the AI</h3><p>Generation and checking send task prompts and the selected work content to Google Gemini. Local file storage does not mean that AI processing stays offline. Review the content before requesting an AI operation.</p></div>
-        <div class="fact"><h3>NEIS only on request</h3><p>Nothing is entered in NEIS until the teacher opens the apply dialog and confirms. The extension works only on the NEIS tab already open in the browser.</p></div>
-      </div>
-    </section>
-
-    <section id="status">
-      <div class="sec-head">
-        <div class="eyebrow">Status</div>
-        <h2>A beta, with its limits stated</h2>
-      </div>
-      <div class="ref-wrap">
-        <table>
-          <tr><th>Release</th><td>v0.1.1-beta.9, a test release. Updates are delivered inside the app from GitHub Releases.</td></tr>
-          <tr><th>Platform</th><td>Windows, 64-bit installer. The interface is in Korean.</td></tr>
-          <tr><th>NEIS coverage</th><td>The NEIS extension currently supports <code>cbe.neis.go.kr</code>, with more regions to follow after verification.</td></tr>
-          <tr><th>Not yet in NEIS apply</th><td>Club and career activity records.</td></tr>
-          <tr><th>Keyword sets</th><td>The Assist keyword lists are a first draft and have not yet been reviewed in schools.</td></tr>
-        </table>
-      </div>
-      <div class="cta" style="margin-top:24px">
-        <a class="btn primary" href="https://github.com/yang102948549/oni-record/releases" target="_blank" rel="noopener">Download the beta</a>
-        <a class="btn" href="../#contact">Contact</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <span>© 2026 Oni School</span>
-    <span><a href="../">Oni School</a> · <a href="../oni-class/">Oni Class</a> · Oni Record</span>
-  </footer>
-</div>
-
-</body>
+  </body>
 </html>

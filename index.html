@@ -6,7 +6,7 @@
     <title>Oni School — Tools for Korean school teachers</title>
     <meta
       name="description"
-      content="Explore Oni Class and Oni Record: Windows tools for classroom schedules, attendance and student records, with clear storage and data-transfer details."
+      content="Oni School is a family of desktop tools for Korean school teachers. Browse every app, its status, and a tour of how each one works."
     />
     <meta name="theme-color" content="#fafaf9" />
     <link rel="canonical" href="https://onischool.net/" />
@@ -16,7 +16,7 @@
     />
     <meta
       property="og:description"
-      content="Explore Oni Class and Oni Record: Windows tools for classroom schedules, attendance and student records, with clear storage and data-transfer details."
+      content="Oni School is a family of desktop tools for Korean school teachers. Browse every app, its status, and a tour of how each one works."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://onischool.net/" />
@@ -42,8 +42,7 @@
           >Oni School</a
         >
         <nav aria-label="Main navigation">
-          <a href="#apps">Apps</a><a href="oni-class/">Oni Class</a
-          ><a href="oni-record/">Oni Record</a><a href="#data">Data</a
+          <a href="#apps">Apps</a><a href="#platform">Platform</a
           ><a href="#contact">Contact</a>
         </nav>
       </header>
@@ -52,373 +51,27 @@
           <div class="eyebrow">Tools for teachers · Made in Korea</div>
           <h1>Less paperwork.<br />More time for teaching.</h1>
           <p class="lead">
-            From classroom schedules to student records, Oni School builds
-            focused tools around the way Korean teachers work.
+            Oni School is a family of desktop tools for Korean school teachers.
+            Each app takes on one part of school work, and each has its own
+            page with a tour of the interface, its data handling and its
+            release status.
           </p>
           <div class="cta">
-            <a class="btn primary" href="oni-class/">Explore Oni Class</a
-            ><a class="btn" href="#apps">See all apps</a>
+            <a class="btn primary" href="#apps">See the apps</a
+            ><a class="btn" href="#contact">About Oni School</a>
           </div>
           <div class="meta">
-            <span class="tag beta">Windows betas available</span
-            ><span>Storage explained for each app</span>
+            <span class="tag beta">Two apps in beta</span
+            ><span>Three more in development or planned</span>
           </div>
         </div>
-        <section id="class">
-          <div class="sec-head">
-            <div class="eyebrow">Inside Oni Class</div>
-            <h2>A whole school day in one workspace.</h2>
-            <p>
-              Select a date to bring its events, to-dos and attendance together.
-              Use the menus below to explore the app’s layout.
-            </p>
-          </div>
-          <figure class="preview" data-demo="">
-            <div
-              class="preview-scroll"
-              tabindex="0"
-              aria-label="Oni Class sample interface. Scroll horizontally on smaller screens."
-            >
-              <div class="app-window" lang="ko">
-                <aside class="app-side">
-                  <div class="app-wordmark">
-                    <svg
-                      class="sw"
-                      style="--c: var(--class)"
-                      viewBox="0 0 256 256"
-                      width="28"
-                      height="28"
-                      aria-hidden="true"
-                    >
-                      <rect
-                        x="16"
-                        y="64"
-                        width="224"
-                        height="128"
-                        rx="64"
-                      ></rect>
-                      <circle cx="176" cy="128" r="50"></circle></svg
-                    ><b>Oni Class</b>
-                  </div>
-                  <div
-                    class="demo-menu"
-                    role="tablist"
-                    aria-label="Explore the app screens"
-                    aria-orientation="vertical"
-                  >
-                    <button
-                      type="button"
-                      id="home-tab-calendar"
-                      role="tab"
-                      aria-selected="true"
-                      aria-controls="home-calendar"
-                      tabindex="0"
-                      aria-label="Calendar"
-                      title="Calendar"
-                    >
-                      캘린더</button
-                    ><button
-                      type="button"
-                      id="home-tab-students"
-                      role="tab"
-                      aria-selected="false"
-                      aria-controls="home-students"
-                      tabindex="-1"
-                      aria-label="Class management"
-                      title="Class management"
-                    >
-                      학급 관리</button
-                    ><button
-                      type="button"
-                      id="home-tab-attendance"
-                      role="tab"
-                      aria-selected="false"
-                      aria-controls="home-attendance"
-                      tabindex="-1"
-                      aria-label="Attendance"
-                      title="Attendance"
-                    >
-                      출결 관리</button
-                    ><button
-                      type="button"
-                      id="home-tab-surveys"
-                      role="tab"
-                      aria-selected="false"
-                      aria-controls="home-surveys"
-                      tabindex="-1"
-                      aria-label="Submissions"
-                      title="Submissions"
-                    >
-                      제출·명단
-                    </button>
-                  </div>
-                  <div class="demo-label">함께 쓰는 기능</div>
-                  <div class="demo-menu">
-                    <span class="inactive">수업 진도</span
-                    ><span class="inactive">위젯</span
-                    ><span class="inactive">설정</span>
-                  </div>
-                </aside>
-                <div class="app-main">
-                  <div class="app-bar">
-                    <b>2학년 1반 · 예시 학교</b
-                    ><span class="sample-status">소개용 예시</span>
-                  </div>
-                  <div
-                    id="home-calendar"
-                    role="tabpanel"
-                    aria-labelledby="home-tab-calendar"
-                    tabindex="0"
-                  >
-                    <div class="calendar-split">
-                      <div>
-                        <div class="calendar-tool">
-                          <strong>2026년 10월</strong
-                          ><span>‹ &nbsp; › &nbsp; 오늘</span>
-                        </div>
-                        <div class="calendar-grid">
-                          <div class="weekday">월</div>
-                          <div class="weekday">화</div>
-                          <div class="weekday">수</div>
-                          <div class="weekday">목</div>
-                          <div class="weekday">금</div>
-                          <div class="calendar-cell">
-                            <time datetime="2026-10-05">5</time
-                            ><span class="cal-event">학년 협의회</span>
-                          </div>
-                          <div class="calendar-cell">
-                            <time datetime="2026-10-06">6</time
-                            ><span class="cal-event">체험학습 안내</span>
-                          </div>
-                          <div class="calendar-cell selected">
-                            <time datetime="2026-10-07">7</time
-                            ><span class="cal-event green">신청서 확인</span
-                            ><span class="cal-event">김하늘 · 질병결석</span>
-                          </div>
-                          <div class="calendar-cell">
-                            <time datetime="2026-10-08">8</time
-                            ><span class="cal-event">모둠 발표</span>
-                          </div>
-                          <div class="calendar-cell">
-                            <time datetime="2026-10-09">9</time
-                            ><span class="cal-event purple">한글날</span>
-                          </div>
-                          <div class="calendar-cell">
-                            <time datetime="2026-10-12">12</time
-                            ><span class="cal-event">학급 자치회</span>
-                          </div>
-                          <div class="calendar-cell">
-                            <time datetime="2026-10-13">13</time
-                            ><span class="cal-event">진로 활동</span>
-                          </div>
-                          <div class="calendar-cell">
-                            <time datetime="2026-10-14">14</time
-                            ><span class="cal-event">독서 나눔</span>
-                          </div>
-                          <div class="calendar-cell">
-                            <time datetime="2026-10-15">15</time
-                            ><span class="cal-event">상담 주간</span>
-                          </div>
-                          <div class="calendar-cell">
-                            <time datetime="2026-10-16">16</time
-                            ><span class="cal-event">자료 정리</span>
-                          </div>
-                          <div class="calendar-cell">
-                            <time datetime="2026-10-19">19</time>
-                          </div>
-                          <div class="calendar-cell">
-                            <time datetime="2026-10-20">20</time>
-                          </div>
-                          <div class="calendar-cell">
-                            <time datetime="2026-10-21">21</time>
-                          </div>
-                          <div class="calendar-cell">
-                            <time datetime="2026-10-22">22</time>
-                          </div>
-                          <div class="calendar-cell">
-                            <time datetime="2026-10-23">23</time>
-                          </div>
-                        </div>
-                      </div>
-                      <aside class="day-panel">
-                        <h3>10월 7일 <small>수요일</small></h3>
-                        <h4>일정과 할 일</h4>
-                        <p>☐ 체험학습 신청서 확인</p>
-                        <p>☑ 학급 자료 정리</p>
-                        <h4>출결</h4>
-                        <p>
-                          <span class="demo-chip yellow">질병결석</span>김하늘
-                        </p>
-                        <h4>오늘 수업</h4>
-                        <p>1교시 &nbsp; 국어</p>
-                        <p>2교시 &nbsp; 수학</p>
-                        <p>3교시 &nbsp; 사회</p>
-                      </aside>
-                    </div>
-                  </div>
-                  <div
-                    id="home-students"
-                    role="tabpanel"
-                    aria-labelledby="home-tab-students"
-                    tabindex="0"
-                    hidden=""
-                  >
-                    <div class="demo-content">
-                      <h3>학급 관리</h3>
-                      <p>2학년 1반 · 학생을 선택해 상세 기록을 살펴보세요.</p>
-                      <table class="demo-table">
-                        <thead>
-                          <tr>
-                            <th scope="col">번호</th>
-                            <th scope="col">이름</th>
-                            <th scope="col">학급</th>
-                            <th scope="col">메모</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr class="selected-row">
-                            <td>01</td>
-                            <td>김하늘</td>
-                            <td>2학년 1반</td>
-                            <td>독서 활동 상담</td>
-                          </tr>
-                          <tr>
-                            <td>02</td>
-                            <td>이도윤</td>
-                            <td>2학년 1반</td>
-                            <td>모둠 발표 참여</td>
-                          </tr>
-                          <tr>
-                            <td>03</td>
-                            <td>박서연</td>
-                            <td>2학년 1반</td>
-                            <td>진로 상담 예정</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <p class="hint" style="margin-top: 22px">
-                        학생 상세 정보와 상담 기록은 PC에 보관합니다.
-                      </p>
-                    </div>
-                  </div>
-                  <div
-                    id="home-attendance"
-                    role="tabpanel"
-                    aria-labelledby="home-tab-attendance"
-                    tabindex="0"
-                    hidden=""
-                  >
-                    <div class="demo-content">
-                      <h3>출결 관리</h3>
-                      <p>
-                        날짜와 학생별로 출결을 모아 보고, 나이스 반영 전에
-                        확인합니다.
-                      </p>
-                      <table class="demo-table">
-                        <thead>
-                          <tr>
-                            <th scope="col">날짜</th>
-                            <th scope="col">학생</th>
-                            <th scope="col">구분</th>
-                            <th scope="col">사유</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr class="selected-row">
-                            <td>10.07</td>
-                            <td>김하늘</td>
-                            <td><span class="demo-chip yellow">결석</span></td>
-                            <td>질병</td>
-                          </tr>
-                          <tr>
-                            <td>10.06</td>
-                            <td>이도윤</td>
-                            <td><span class="demo-chip">조퇴</span></td>
-                            <td>인정</td>
-                          </tr>
-                          <tr>
-                            <td>10.05</td>
-                            <td>박서연</td>
-                            <td><span class="demo-chip green">지각</span></td>
-                            <td>질병</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <p class="hint" style="margin-top: 22px">
-                        나이스 반영은 앱에서 별도로 요청합니다.
-                      </p>
-                    </div>
-                  </div>
-                  <div
-                    id="home-surveys"
-                    role="tabpanel"
-                    aria-labelledby="home-tab-surveys"
-                    tabindex="0"
-                    hidden=""
-                  >
-                    <div class="demo-content">
-                      <h3>제출·명단</h3>
-                      <p>
-                        체험학습 신청서 · 학생별 제출 여부를 한눈에 확인합니다.
-                      </p>
-                      <table class="demo-table">
-                        <thead>
-                          <tr>
-                            <th scope="col">번호</th>
-                            <th scope="col">이름</th>
-                            <th scope="col">신청서</th>
-                            <th scope="col">보호자 동의</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr class="selected-row">
-                            <td>01</td>
-                            <td>김하늘</td>
-                            <td><span class="demo-chip green">제출</span></td>
-                            <td>확인</td>
-                          </tr>
-                          <tr>
-                            <td>02</td>
-                            <td>이도윤</td>
-                            <td>
-                              <span class="demo-chip yellow">미제출</span>
-                            </td>
-                            <td>확인 전</td>
-                          </tr>
-                          <tr>
-                            <td>03</td>
-                            <td>박서연</td>
-                            <td><span class="demo-chip green">제출</span></td>
-                            <td>확인</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <p class="hint" style="margin-top: 22px">
-                        현재 소스에서는 제출·명단을 모바일과 동기화합니다.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <figcaption>
-              An interactive illustration based on the app’s sidebar, calendar
-              and day panel. Select a menu to explore. The app interface is
-              Korean; all names and records shown here are fictional. Some
-              details may differ from your installed version.
-            </figcaption>
-          </figure>
-          <div class="cta" style="margin-top: 22px">
-            <a href="oni-class/">Explore the Oni Class workflow →</a>
-          </div>
-        </section>
         <section id="apps">
           <div class="sec-head">
             <div class="eyebrow">The apps</div>
             <h2>A focused tool for each part of the job.</h2>
             <p>
-              A shared switch icon and a calm, familiar interface. Each app has
-              its own purpose, release status and data-handling model.
+              Open an app’s tour to see its screens, workflow and data
+              handling. Apps without a tour are not released yet.
             </p>
           </div>
           <div class="app-list">
@@ -441,6 +94,7 @@
                   student rosters, attendance and submissions. Built around the
                   Windows desktop, with selected records available on mobile.
                 </p>
+                <p class="hint">Windows desktop · Korean interface</p>
                 <div class="app-links">
                   <a href="oni-class/">Full tour →</a
                   ><a
@@ -470,6 +124,7 @@
                   review the wording and byte count, and apply teacher-approved
                   text to NEIS.
                 </p>
+                <p class="hint">Windows desktop · Korean interface</p>
                 <div class="app-links">
                   <a href="oni-record/">Full tour →</a
                   ><a
@@ -546,139 +201,43 @@
             </article>
           </div>
         </section>
-        <section id="record">
+        <section id="platform">
           <div class="sec-head">
-            <div class="eyebrow">Inside Oni Record</div>
-            <h2>From observation to a reviewed student record.</h2>
+            <div class="eyebrow">The platform</div>
+            <h2>Different jobs, one way of working.</h2>
             <p>
-              Keep student notes in a table, then move through Write, Assist,
-              Check and Apply to NEIS. The teacher reviews what AI produces.
+              The apps are separate downloads, but they are designed as one
+              family so a teacher who knows one can pick up the next.
             </p>
           </div>
           <div class="feature-grid">
             <article class="feature-item">
               <div class="number">01</div>
-              <h3>Start with observations</h3>
+              <h3>One look across every app</h3>
               <p>
-                Draft from the teacher’s notes about each student’s activities
-                and progress.
+                A color-coded switch icon for each app, and the same calm
+                layout, type and controls inside.
               </p>
             </article>
             <article class="feature-item">
               <div class="number">02</div>
-              <h3>Compare before and after</h3>
+              <h3>Built around Korean school work</h3>
               <p>
-                Review suggested changes and their reasons, then choose what to
-                apply.
+                Korean interfaces that follow real school routines, including
+                the steps that end in NEIS, the national school information
+                system.
               </p>
             </article>
             <article class="feature-item">
               <div class="number">03</div>
-              <h3>Apply reviewed records</h3>
+              <h3>Data handling stated per app</h3>
               <p>
-                Send selected, teacher-approved text to the supported NEIS
-                screens.
+                Storage differs from app to app, so each tour says what stays on
+                the PC and what leaves it.
+                <a href="oni-class/#data">Oni Class data</a> ·
+                <a href="oni-record/#data">Oni Record data</a>
               </p>
             </article>
-          </div>
-          <div class="cta" style="margin-top: 24px">
-            <a class="btn" href="oni-record/">Explore Oni Record</a>
-          </div>
-        </section>
-        <section id="data">
-          <div class="sec-head">
-            <div class="eyebrow">Data, app by app</div>
-            <h2>What stays on the PC. What leaves it.</h2>
-            <p>
-              Storage differs across the apps. Local files, account sync, AI
-              requests and NEIS transfers are separate parts of the picture.
-            </p>
-          </div>
-          <div
-            class="table-scroll"
-            tabindex="0"
-            aria-label="Storage and transfer by app"
-          >
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th scope="col">App</th>
-                  <th scope="col">Stored on the PC</th>
-                  <th scope="col">Sent outside the PC</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">
-                    Oni Class<small>Local storage + account sync</small>
-                  </th>
-                  <td>
-                    Detailed student profiles, enrollment history, counseling
-                    and observation notes, seating plans, memos, teaching
-                    progress, settings and import history. Synced records also
-                    have local copies.<small
-                      >Record payloads in the Windows SQLite store are encrypted
-                      with DPAPI.</small
-                    >
-                  </td>
-                  <td>
-                    The current source syncs calendar entries and to-dos,
-                    attendance, submissions, timetables and a minimal roster for
-                    the selected class to the account cloud. That roster
-                    contains student IDs, names and numbers, plus school year,
-                    grade and class.<small
-                      >Attendance is sent to NEIS when the teacher requests it.
-                      Sync availability can differ by release and account
-                      status.</small
-                    >
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    Oni Record<small>Local files + AI requests</small>
-                  </th>
-                  <td>
-                    Writing sheets, cell contents, generated text, preferences
-                    and prompts are saved as local JSON. The separate check
-                    window has its own JSON file. The API key is encrypted when
-                    OS encryption is available.<small
-                      >The current implementation falls back to plaintext key
-                      storage if OS encryption is unavailable. Work JSON files
-                      are not encrypted by the app.</small
-                    >
-                  </td>
-                  <td>
-                    AI generation and checking send prompts and selected work
-                    content directly to Google Gemini using the teacher’s API
-                    key. Reading or applying NEIS records is a separate
-                    user-requested action.<small
-                      >The reviewed source does not sync work sheets to an Oni
-                      account cloud.</small
-                    >
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    Oni Proctor<br />Oni Time<br />Oni Enrollment
-                  </th>
-                  <td colspan="2">
-                    In development or planning. Storage and transfer details
-                    will be published after each app’s release implementation
-                    has been reviewed.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="hint">
-            Based on source reviewed on October 9, 2026. This does not imply
-            that records stored by earlier versions were automatically deleted.
-            Check the guidance for your installed release.
-          </p>
-          <div class="callout">
-            Oni Record currently uses Google Gemini. Generation and checking
-            send selected work content to the AI provider; the teacher reviews
-            the result.
           </div>
         </section>
         <section id="contact">
@@ -718,7 +277,7 @@
       <footer>
         <span>© 2026 Oni School · Oniaby</span
         ><span
-          ><a href="#data">Data by app</a> ·
+          ><a href="#apps">Apps</a> ·
           <a href="mailto:oniaby@onischool.net">Contact</a></span
         >
       </footer>
