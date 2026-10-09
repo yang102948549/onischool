@@ -324,6 +324,7 @@
 [hidden] {
   display: none !important;
 }
+.preview + .feature-grid { margin-top: 26px; }
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

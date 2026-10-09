@@ -33,8 +33,8 @@ if (copy)
     const status = document.querySelector("#copy-status");
     try {
       await navigator.clipboard.writeText("oniaby@onischool.net");
-      status.textContent = "메일 주소를 복사했어요.";
+      status.textContent = "Email address copied.";
     } catch {
-      status.textContent = "oniaby@onischool.net을 선택해 복사해 주세요.";
+      status.textContent = "Select and copy oniaby@onischool.net.";
     }
   });
