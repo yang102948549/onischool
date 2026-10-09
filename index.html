@@ -1,0 +1,325 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Oni School</title>
+<meta name="description" content="Oni School builds local-first desktop tools for Korean school teachers: Oni Class, Oni Record and Oni Proctor.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: Notion-calm single column (Oni School foundations v0.1). App switches are the one bold element. */
+:root{
+  --bg:#fafaf9; --surface:#ffffff; --subtle:#f3f3f1; --border:#dcdcd6;
+  --text:#292927; --text-2:#595955; --muted:#71716b;
+  --action:#1b70c9; --focus:#2383e2;
+  --class:#007aff; --record:#e05252; --proctor:#149c95; --time:#8b65d8; --enroll:#e58a32;
+  --class-soft:#eaf3fd; --record-soft:#fdeded; --proctor-soft:#e7f6f4; --time-soft:#f2edfb; --enroll-soft:#fff3e6;
+  --ok:#087d6b; --ok-soft:#e8f7f3; --warn:#956000; --warn-soft:#fff5e5; --info:#1b70c9; --info-soft:#eaf3fd;
+  --knob:#ffffff;
+  --font:"Pretendard","Noto Sans KR",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Segoe UI",sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --r6:6px; --r12:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#191919; --surface:#202020; --subtle:#262624; --border:#36362f;
+  --text:rgba(255,255,255,.88); --text-2:rgba(255,255,255,.7); --muted:rgba(255,255,255,.52);
+  --action:#5ea6ef; --focus:#5ea6ef;
+  --class-soft:#16283d; --record-soft:#3a1f1f; --proctor-soft:#13302d; --time-soft:#2a2240; --enroll-soft:#3a2a18;
+  --ok:#5fd0b9; --ok-soft:#163a33; --warn:#e9b45c; --warn-soft:#3a2e17; --info:#7ab6f2; --info-soft:#18304a;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#191919; --surface:#202020; --subtle:#262624; --border:#36362f;
+  --text:rgba(255,255,255,.88); --text-2:rgba(255,255,255,.7); --muted:rgba(255,255,255,.52);
+  --action:#5ea6ef; --focus:#5ea6ef;
+  --class-soft:#16283d; --record-soft:#3a1f1f; --proctor-soft:#13302d; --time-soft:#2a2240; --enroll-soft:#3a2a18;
+  --ok:#5fd0b9; --ok-soft:#163a33; --warn:#e9b45c; --warn-soft:#3a2e17; --info:#7ab6f2; --info-soft:#18304a;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16px;line-height:1.65;margin:0;padding-inline:20px;padding-block:0 64px;-webkit-font-smoothing:antialiased;word-break:keep-all}
+.wrap{max-width:960px;margin:0 auto}
+a{color:var(--action);text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+h1,h2,h3{text-wrap:balance;margin:0}
+
+/* Brand switch */
+.sw{display:inline-block;flex:none}
+.sw rect{fill:var(--c)}
+.sw circle{fill:var(--knob)}
+
+header.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:20px;border-bottom:1px solid var(--border)}
+.brand{display:flex;align-items:center;gap:10px;color:var(--text);font-weight:900;font-size:18px;letter-spacing:-.01em}
+.brand:hover{text-decoration:none}
+nav{display:flex;gap:20px;font-size:14px;font-weight:500}
+nav a{color:var(--text-2)}
+
+/* Hero */
+.hero{padding-block:72px 56px;display:grid;gap:28px}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.hero h1{font-size:clamp(36px,7vw,64px);line-height:1.12;letter-spacing:-.035em;font-weight:900;max-width:14ch}
+.hero p.lead{font-size:clamp(17px,2.4vw,20px);color:var(--text-2);max-width:56ch;margin:0}
+.switchboard{display:flex;flex-wrap:wrap;gap:10px 22px;padding:16px 18px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r12);width:fit-content;max-width:100%}
+.switchboard span{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:var(--text-2)}
+.sw.big{width:30px;height:30px}
+.sw.big circle{transition:transform .5s cubic-bezier(.3,.8,.3,1)}
+.sw.big circle{transform-box:view-box}
+.sw.big.off circle{transform:translateX(-96px)}
+.sw.big.off rect{fill:var(--border);transition:fill .4s}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;height:42px;padding:0 18px;border-radius:var(--r6);font-weight:700;font-size:15px;border:1px solid var(--border);color:var(--text);background:var(--surface)}
+.btn:hover{text-decoration:none;background:var(--subtle)}
+.btn.primary{background:var(--action);border-color:var(--action);color:#fff}
+.btn.primary:hover{filter:brightness(1.07);background:var(--action)}
+
+section{padding-block:56px;border-top:1px solid var(--border)}
+.sec-head{display:grid;gap:8px;margin-bottom:28px}
+.sec-head h2{font-size:clamp(24px,4vw,32px);letter-spacing:-.02em;font-weight:900;line-height:1.25}
+.sec-head p{color:var(--text-2);margin:0;max-width:60ch}
+
+/* App directory (Notion-like rows) */
+.apps{border:1px solid var(--border);border-radius:var(--r12);background:var(--surface);overflow:hidden}
+.app{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:6px 14px;align-items:start;padding:20px 22px;border-top:1px solid var(--border)}
+.app:first-child{border-top:0}
+.app .sw{width:22px;height:22px;margin-top:3px}
+.app h3{font-size:18px;font-weight:700;line-height:1.5}
+.app h3 small{font-weight:500;color:var(--muted);font-size:14px;margin-left:6px}
+.app p{margin:2px 0 0;color:var(--text-2);font-size:15px;max-width:62ch}
+.app .links{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px;font-weight:500}
+.tag{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:3px;font-size:12px;font-weight:700;white-space:nowrap}
+.tag.beta{background:var(--ok-soft);color:var(--ok)}
+.tag.dev{background:var(--info-soft);color:var(--info)}
+.tag.plan{background:var(--subtle);color:var(--muted)}
+
+/* Oni Record feature */
+.feature{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:36px;align-items:start}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:18px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:12px;counter-increment:s}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--record-soft);color:var(--record);font-weight:900;font-size:14px}
+.steps b{display:block;font-size:16px}
+.steps span{color:var(--text-2);font-size:15px}
+.mock{background:var(--surface);border:1px solid var(--border);border-radius:var(--r12);overflow:hidden;font-size:13px;min-width:0}
+.mock .bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--border);color:var(--muted);font-weight:500}
+.mock .bar .sw{width:18px;height:18px}
+.mock .bar b{color:var(--text)}
+.mock .scroll{overflow-x:auto}
+.mock table{border-collapse:collapse;width:100%;min-width:460px}
+.mock th,.mock td{border-bottom:1px solid var(--border);padding:9px 12px;text-align:left;vertical-align:top}
+.mock th{font-weight:500;color:var(--muted);background:var(--subtle);font-size:12px}
+.mock td.name{font-weight:700;white-space:nowrap}
+.mock td.txt{color:var(--text-2);line-height:1.55}
+.mock .bytes{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:12px;white-space:nowrap}
+.mock .bytes.ok{color:var(--ok)}
+.mock .bytes.warn{color:var(--warn)}
+.mock .chip{display:inline-block;margin-top:6px;padding:1px 7px;border-radius:3px;font-size:11px;font-weight:700}
+.chip.warn{background:var(--warn-soft);color:var(--warn)}
+.chip.ok{background:var(--ok-soft);color:var(--ok)}
+.mock .note{padding:10px 14px;color:var(--muted);font-size:12px}
+
+/* Data handling */
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r12);overflow:hidden}
+.fact{background:var(--surface);padding:22px}
+.fact h3{font-size:16px;font-weight:700;margin-bottom:6px}
+.fact p{margin:0;color:var(--text-2);font-size:15px}
+code{font-family:var(--mono);font-size:.9em;background:var(--subtle);padding:1px 5px;border-radius:3px}
+
+/* About + contact */
+.about{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:36px}
+.about p{margin:0 0 12px;color:var(--text-2);max-width:60ch}
+.contact{background:var(--surface);border:1px solid var(--border);border-radius:var(--r12);padding:22px;display:grid;gap:10px;align-content:start}
+.contact .label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.contact .mail{font-size:18px;font-weight:700;user-select:all;overflow-wrap:anywhere}
+.contact button{justify-self:start;font:inherit;font-size:14px;font-weight:700;height:34px;padding:0 14px;border-radius:var(--r6);border:1px solid var(--border);background:var(--subtle);color:var(--text);cursor:pointer}
+.contact small{color:var(--muted);font-size:13px}
+
+footer{border-top:1px solid var(--border);padding-block:24px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;color:var(--muted);font-size:13px}
+
+@media (max-width:760px){
+  .feature,.about{grid-template-columns:minmax(0,1fr)}
+  .facts{grid-template-columns:minmax(0,1fr)}
+  nav{display:none}
+  .hero{padding-block:48px 40px}
+  .app{grid-template-columns:24px minmax(0,1fr)}
+  .app .tag{grid-column:2;justify-self:start;grid-row:1}
+  .app > div{grid-column:2}
+}
+@media (prefers-reduced-motion:reduce){.sw.big circle,.sw.big rect{transition:none}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="oni-sw" viewBox="0 0 256 256"><rect x="16" y="64" width="224" height="128" rx="64" style="fill:var(--c)"/><circle cx="176" cy="128" r="50" style="fill:var(--knob)"/></symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#top" aria-label="Oni School home">
+      <svg class="sw" width="26" height="26" style="--c:var(--text)" viewBox="0 0 256 256" aria-hidden="true"><rect x="16" y="64" width="224" height="128" rx="64"/><circle cx="176" cy="128" r="50" style="fill:var(--bg)"/></svg>
+      Oni School
+    </a>
+    <nav aria-label="Sections">
+      <a href="#apps">Apps</a>
+      <a href="#record">Oni Record</a>
+      <a href="#data">Student data</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div class="eyebrow">Desktop tools for school teachers · Korea</div>
+      <h1>Switch on the paperwork, then get back to teaching.</h1>
+      <p class="lead">Oni School makes desktop apps for Korean middle and high school teachers. Each app takes one slow, repetitive part of school admin, such as class schedules, student record writing or exam proctor rosters, and makes it a few clicks. Everything runs on the teacher's own PC.</p>
+      <div class="switchboard" aria-label="Oni School apps">
+        <span><svg class="sw big off" style="--c:var(--class)" viewBox="0 0 256 256" aria-hidden="true"><rect x="16" y="64" width="224" height="128" rx="64"/><circle cx="176" cy="128" r="50"/></svg>Oni Class</span>
+        <span><svg class="sw big off" style="--c:var(--record)" viewBox="0 0 256 256" aria-hidden="true"><rect x="16" y="64" width="224" height="128" rx="64"/><circle cx="176" cy="128" r="50"/></svg>Oni Record</span>
+        <span><svg class="sw big off" style="--c:var(--proctor)" viewBox="0 0 256 256" aria-hidden="true"><rect x="16" y="64" width="224" height="128" rx="64"/><circle cx="176" cy="128" r="50"/></svg>Oni Proctor</span>
+      </div>
+      <div class="cta">
+        <a class="btn primary" href="#apps">See the apps</a>
+        <a class="btn" href="https://github.com/yang102948549/oni-record/releases" target="_blank" rel="noopener">Download Oni Record beta</a>
+      </div>
+    </div>
+
+    <section id="apps">
+      <div class="sec-head">
+        <div class="eyebrow">The platform</div>
+        <h2>One school, one consistent set of apps</h2>
+        <p>Every Oni app shares the same design system, the same color-coded switch icon and the same local-first approach to data. Teachers learn the pattern once.</p>
+      </div>
+      <div class="apps">
+        <article class="app">
+          <svg class="sw" style="--c:var(--class)" aria-hidden="true"><use href="#oni-sw"/></svg>
+          <div>
+            <h3>Oni Class <small>학급 일정관리</small></h3>
+            <p>A homeroom teacher's desk: the school calendar, class to-dos, rosters and records in calendar, table and board views. Windows desktop app with a companion Chrome extension.</p>
+            <div class="links"><a href="https://github.com/yang102948549/oni-class/releases" target="_blank" rel="noopener">Releases</a></div>
+          </div>
+          <span class="tag beta">Beta</span>
+        </article>
+        <article class="app">
+          <svg class="sw" style="--c:var(--record)" aria-hidden="true"><use href="#oni-sw"/></svg>
+          <div>
+            <h3>Oni Record <small>Oni생기부</small></h3>
+            <p>Write and check student life records (생활기록부) in one spreadsheet-like grid. AI drafts subject comments, activities and behavior notes from the teacher's own keywords, checks them against the official writing guidelines, and sends approved text to NEIS.</p>
+            <div class="links"><a href="oni-record/">Full tour</a><a href="#record">How it works</a><a href="https://github.com/yang102948549/oni-record/releases" target="_blank" rel="noopener">Download v0.1.1 beta</a></div>
+          </div>
+          <span class="tag beta">Beta</span>
+        </article>
+        <article class="app">
+          <svg class="sw" style="--c:var(--proctor)" aria-hidden="true"><use href="#oni-sw"/></svg>
+          <div>
+            <h3>Oni Proctor <small>Oni 감독</small></h3>
+            <p>Builds fair exam proctor assignments across rooms and periods, so the exams office stops balancing the roster by hand every term.</p>
+          </div>
+          <span class="tag dev">In development</span>
+        </article>
+        <article class="app">
+          <svg class="sw" style="--c:var(--time)" aria-hidden="true"><use href="#oni-sw"/></svg>
+          <div>
+            <h3>Oni Time <small>Oni 시간표</small></h3>
+            <p>The next app on the Oni platform. Details will be shared when development starts.</p>
+          </div>
+          <span class="tag plan">Planned</span>
+        </article>
+        <article class="app">
+          <svg class="sw" style="--c:var(--enroll)" aria-hidden="true"><use href="#oni-sw"/></svg>
+          <div>
+            <h3>Oni Enrollment <small>Oni 수강신청</small></h3>
+            <p>Elective course registration for students, with live seat counts, built on a system already used by around 190 students.</p>
+          </div>
+          <span class="tag plan">Planned</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="record">
+      <div class="sec-head">
+        <div class="eyebrow">Spotlight · Oni Record</div>
+        <h2>Student records, written and checked in one table</h2>
+        <p>Every December, Korean teachers write hundreds of short, rule-bound comments for each student's official record. Oni Record turns that into four steps. <a href="oni-record/">See the full tour</a>.</p>
+      </div>
+      <div class="feature">
+        <ol class="steps">
+          <li><div><b>Write</b><span>Type like a spreadsheet. Pick keywords for each student and let AI draft subject, activity and behavior comments.</span></div></li>
+          <li><div><b>Assist</b><span>Keyword chips give the teacher material for each sentence, so the draft stays in the teacher's own observations.</span></div></li>
+          <li><div><b>Check</b><span>Each draft is checked against the official writing guidelines and NEIS byte limits, with before and after shown side by side.</span></div></li>
+          <li><div><b>Apply</b><span>Approved text goes straight into the NEIS grid through the Oni browser extension. No Excel upload step.</span></div></li>
+        </ol>
+        <figure class="mock" style="margin:0">
+          <div class="bar"><svg class="sw" style="--c:var(--record)" aria-hidden="true"><use href="#oni-sw"/></svg><b>2학년 1반</b> · 과목별 세부능력 및 특기사항</div>
+          <div class="scroll">
+            <table>
+              <thead><tr><th>번호</th><th>이름</th><th>세특 초안</th><th>바이트</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td class="name">김하늘</td><td class="txt">모둠 토론에서 근거 자료를 찾아 정리하고, 반대 의견을 존중하며 자신의 주장을 보완함.<br><span class="chip ok">점검 통과</span></td><td class="bytes ok">1,184 / 1,500</td></tr>
+                <tr><td>2</td><td class="name">이도윤</td><td class="txt">실험 결과를 그래프로 정리하는 과정에서 변인 통제의 중요성을 스스로 설명함.<br><span class="chip warn">구체적 활동 근거 보완 필요</span></td><td class="bytes warn">1,492 / 1,500</td></tr>
+                <tr><td>3</td><td class="name">박서연</td><td class="txt">독서 활동 후 질문 목록을 만들어 친구들과 나누며 탐구를 확장함.<br><span class="chip ok">점검 통과</span></td><td class="bytes ok">962 / 1,500</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <figcaption class="note">Illustrative example. Student names are fictional.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="data">
+      <div class="sec-head">
+        <div class="eyebrow">Student data</div>
+        <h2>Built so student records stay with the teacher</h2>
+        <p>School records are among the most sensitive data a teacher handles. Oni apps are designed around that.</p>
+      </div>
+      <div class="facts">
+        <div class="fact"><h3>Local-first</h3><p>Rosters, schedules and records are saved in a database on the teacher's own PC. Oni School does not run a server that stores student records.</p></div>
+        <div class="fact"><h3>Bring your own AI key</h3><p>Teachers connect their own AI API key. The key is stored on their PC, and requests go from the app directly to the AI provider.</p></div>
+        <div class="fact"><h3>Teacher stays in control</h3><p>AI only drafts and checks. Nothing reaches NEIS until the teacher selects it and applies it.</p></div>
+        <div class="fact"><h3>Honest scope</h3><p>Oni Record is a test release. The NEIS extension currently supports <code>cbe.neis.go.kr</code>, with more regions to follow after verification.</p></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="about">
+        <div>
+          <div class="sec-head" style="margin-bottom:16px">
+            <div class="eyebrow">About</div>
+            <h2>Made by a teacher, tested in a real school</h2>
+          </div>
+          <p>Oni School is run by a Korean middle school teacher who has spent years building classroom tools: course registration, proctor assignment, record writing and classroom games. Each Oni app started as a tool for one school and was rebuilt so any teacher can install it.</p>
+          <p>Our aim is simple: give teachers back the hours that school admin takes, without asking them to give up control of their students' data.</p>
+        </div>
+        <div class="contact">
+          <div class="label">Contact</div>
+          <div class="mail" id="mail">oniaby@onischool.net</div>
+          <button type="button" id="copy">Copy address</button>
+          <small>We reply in Korean or English.</small>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Oni School</span>
+    <span>Oni Class · Oni Record · Oni Proctor</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var sws = document.querySelectorAll('.sw.big');
+  sws.forEach(function(el,i){
+    if(reduce){ el.classList.remove('off'); return; }
+    setTimeout(function(){ el.classList.remove('off'); }, 350 + i*260);
+  });
+  var btn = document.getElementById('copy'), mail = document.getElementById('mail');
+  btn.addEventListener('click', function(){
+    var t = mail.textContent.trim();
+    function selectIt(){ var r=document.createRange(); r.selectNodeContents(mail); var s=getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent='Selected. Press Ctrl+C'; }
+    try{
+      navigator.clipboard.writeText(t).then(function(){ btn.textContent='Copied'; }, selectIt);
+    }catch(e){ selectIt(); }
+  });
+})();
+</script>
+
+</body></html>
